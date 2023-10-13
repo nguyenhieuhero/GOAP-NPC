@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="InventoryResource" load_steps=8 format=3 uid="uid://8ast4l400q0n"]
+
+[ext_resource type="Script" path="res://Resources/Inventory.gd" id="1_o4pj2"]
+[ext_resource type="Script" path="res://Resources/StackItem.gd" id="2_d5f8j"]
+
+[sub_resource type="Resource" id="Resource_okjfs"]
+script = ExtResource("2_d5f8j")
+quanity = 0
+
+[sub_resource type="Resource" id="Resource_jj64l"]
+script = ExtResource("2_d5f8j")
+quanity = 0
+
+[sub_resource type="Resource" id="Resource_8ufa1"]
+script = ExtResource("2_d5f8j")
+quanity = 0
+
+[sub_resource type="Resource" id="Resource_l6pk4"]
+script = ExtResource("2_d5f8j")
+quanity = 0
+
+[sub_resource type="Resource" id="Resource_kw6yx"]
+script = ExtResource("2_d5f8j")
+quanity = 0
+
+[resource]
+script = ExtResource("1_o4pj2")
+slots = Array[ExtResource("2_d5f8j")]([SubResource("Resource_okjfs"), SubResource("Resource_jj64l"), SubResource("Resource_8ufa1"), SubResource("Resource_l6pk4"), SubResource("Resource_kw6yx")])
+maxInSLot = 9

@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdycwjtpm47ml"]
+
+[ext_resource type="Texture2D" uid="uid://baqio78rarav4" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic Grass Biom things 1.png" id="1_aqpls"]
+[ext_resource type="PackedScene" uid="uid://wrmxl8al7ruj" path="res://Common/Scenes/Hurtbox.tscn" id="2_auw0y"]
+[ext_resource type="Script" path="res://Objects/Tree/TreeHurtbox.gd" id="3_qoagt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87xby"]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asych"]
+size = Vector2(6, 14)
+
+[sub_resource type="Animation" id="Animation_y2b4d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_u2v4c"]
+resource_name = "being hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 12), Vector2(-2, 12), Vector2(2, 12), Vector2(0, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bh6dg"]
+_data = {
+"RESET": SubResource("Animation_y2b4d"),
+"being hit": SubResource("Animation_u2v4c")
+}
+
+[node name="Tree2" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -12)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+texture = ExtResource("1_aqpls")
+offset = Vector2(0, -12)
+hframes = 9
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_87xby")
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("2_auw0y")]
+script = ExtResource("3_qoagt")
+animation = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_asych")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bh6dg")
+}
