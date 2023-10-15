@@ -351,6 +351,9 @@ texture = ExtResource("5_um8bc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_boktk"]
 texture = ExtResource("6_2nunc")
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fi3rn"]
 resource_name = "Item"
@@ -373,6 +376,7 @@ sources/7 = SubResource("TileSetScenesCollectionSource_c3nnm")
 
 [node name="GameWorld" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(9, 14)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -389,23 +393,21 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = -4
 layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Ground"
+layer_2/name = "Collectables"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = true
+layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
-layer_2/z_index = 1
-layer_2/tile_data = PackedInt32Array(458765, 7, 65536, 393235, 7, 65536)
-layer_3/name = "Collectables"
+layer_2/z_index = -10
+layer_2/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 589841, 6, 65536, 720906, 6, 65536, 524293, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 655377, 6, 65536, 720913, 6, 65536, 786449, 6, 65536, 851985, 6, 65536, 917521, 6, 65536, 983057, 6, 65536)
+layer_3/name = "Ground"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 589841, 6, 65536, 720906, 6, 65536, 524293, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 655377, 6, 65536, 720913, 6, 65536, 786449, 6, 65536, 851985, 6, 65536, 917521, 6, 65536, 983057, 6, 65536)
+layer_3/z_index = 2
+layer_3/tile_data = PackedInt32Array(458765, 7, 65536, 393235, 7, 65536)
 
 [node name="Player" parent="." instance=ExtResource("1_j3t0f")]
 z_index = 0
-z_as_relative = false
-y_sort_enabled = false
-position = Vector2(160, 78)
+position = Vector2(217, 47)

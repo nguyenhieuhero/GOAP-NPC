@@ -8,10 +8,13 @@
 size = Vector2(8, 10)
 
 [node name="LifePot" instance=ExtResource("1_dtkyv")]
+position = Vector2(0, -6)
 itemRes = ExtResource("2_46bb1")
 
 [node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_rt4bt")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_1t5c4")
+offset = Vector2(0, 6)

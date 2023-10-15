@@ -17,11 +17,16 @@ func _physics_process(_delta):
 	move_and_slide()
 func _process(delta):
 	direction = Input.get_vector("left","right","up","down")
-	if direction != Vector2.ZERO and not isAction:
+	if isAction:
+		return
+	if direction != Vector2.ZERO:
 		update_animation_direction(direction)
 	if Input.is_action_just_pressed("axe"):
 		set_idle()
 		animation_tree.set("parameters/conditions/is_axe", true)
+	if Input.is_action_just_pressed("action"):
+		set_idle()
+		animation_tree.set("parameters/conditions/is_pick", true)	
 	update_state()
 	
 	
@@ -30,6 +35,7 @@ func update_animation_direction(input: Vector2):
 		animation_tree.set("parameters/idle/blend_position", input)
 		animation_tree.set("parameters/walk/blend_position", input)
 		animation_tree.set("parameters/axe/blend_position", input)
+		animation_tree.set("parameters/pick/blend_position", input)
 		
 func update_state():
 	if velocity == Vector2.ZERO:

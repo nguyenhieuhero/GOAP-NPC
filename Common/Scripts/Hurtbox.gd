@@ -1,10 +1,10 @@
 extends Area2D
 class_name Hurtbox
 @export var maxHealth: int = 45
-var currentHealt: int
+var currentHealth: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentHealt = maxHealth
+	currentHealth = maxHealth
 	pass # Replace with function body.
 
 
@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func _on_area_entered(area: Hitbox):
-	currentHealt-=area.dame
-	print(currentHealt)
-	if(currentHealt<0):
+	currentHealth-=area.dame
+	print(currentHealth)
+	if(currentHealth<0):
 		get_parent().queue_free()

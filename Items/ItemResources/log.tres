@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://bjhmb7s7t2dwb"]
+
+[ext_resource type="Script" path="res://Resources/Item.gd" id="1_foxgt"]
+
+[resource]
+script = ExtResource("1_foxgt")
+name = ""
+addHealth = 0
+addSanity = 0
+addHunger = 0
