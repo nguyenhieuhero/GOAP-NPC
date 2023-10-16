@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvqxm4letr6ny"]
+
+[ext_resource type="PackedScene" uid="uid://c2bdg5p71x4bn" path="res://Items/ItemArea/ItemArea.tscn" id="1_h47vg"]
+[ext_resource type="Resource" uid="uid://bawaenf7fqiu6" path="res://Items/ItemResources/log.tres" id="2_apcxo"]
+[ext_resource type="Texture2D" uid="uid://dcc1psr3nefog" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/log.png" id="3_myaxs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4cc2"]
+size = Vector2(16, 7)
+
+[node name="Log" instance=ExtResource("1_h47vg")]
+itemRes = ExtResource("2_apcxo")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_q4cc2")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_myaxs")

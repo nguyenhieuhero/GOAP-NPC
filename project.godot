@@ -14,6 +14,10 @@ config/name="Goap"
 run/main_scene="res://Root.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 
+[autoload]
+
+CreateItem="*res://Scripts/CreateItem.gd"
+
 [display]
 
 window/size/viewport_width=576

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdycwjtpm47ml"]
+[gd_scene load_steps=10 format=3 uid="uid://cdycwjtpm47ml"]
 
 [ext_resource type="Texture2D" uid="uid://baqio78rarav4" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic Grass Biom things 1.png" id="1_aqpls"]
 [ext_resource type="PackedScene" uid="uid://wrmxl8al7ruj" path="res://Common/Scenes/Hurtbox.tscn" id="2_auw0y"]
@@ -25,6 +25,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 12)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_u2v4c"]
 resource_name = "being hit"
@@ -42,13 +54,31 @@ tracks/0/keys = {
 "values": [Vector2(0, 12), Vector2(-2, 12), Vector2(2, 12), Vector2(0, 12)]
 }
 
+[sub_resource type="Animation" id="Animation_h0r3o"]
+resource_name = "fall"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.14, 0.18, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.409089, 1.53193, 1.46629, 1.57049]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bh6dg"]
 _data = {
 "RESET": SubResource("Animation_y2b4d"),
-"being hit": SubResource("Animation_u2v4c")
+"being hit": SubResource("Animation_u2v4c"),
+"fall": SubResource("Animation_h0r3o")
 }
 
-[node name="Tree2" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D"]
 y_sort_enabled = true
 position = Vector2(0, -12)
 
