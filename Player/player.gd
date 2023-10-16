@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Actor
 
 @export var SPEED: float = 100
 @export var direction: Vector2 = Vector2(0, 1)
@@ -20,13 +20,7 @@ func _process(delta):
 	if isAction:
 		return
 	if direction != Vector2.ZERO:
-		update_animation_direction(direction)
-	if Input.is_action_just_pressed("axe"):
-		set_idle()
-		animation_tree.set("parameters/conditions/is_axe", true)
-	if Input.is_action_just_pressed("action"):
-		set_idle()
-		animation_tree.set("parameters/conditions/is_pick", true)	
+		update_animation_direction(direction)	
 	update_state()
 	
 	

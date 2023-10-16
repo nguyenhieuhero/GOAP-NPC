@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://bkmldnnp76f2v"]
+[gd_scene load_steps=92 format=3 uid="uid://bkmldnnp76f2v"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_wmt3j"]
 [ext_resource type="Texture2D" uid="uid://xin6rec66v64" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Actions.png" id="2_6dxic"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b5exwdq0s0hc2" path="res://Common/Scenes/Hitbox.tscn" id="5_s1eks"]
 [ext_resource type="PackedScene" uid="uid://dg2j5eunrih2p" path="res://Common/Scenes/Stat.tscn" id="6_f7fk4"]
 [ext_resource type="PackedScene" uid="uid://cabkpewe0qij7" path="res://Inventory/Inventory.tscn" id="7_307r4"]
+[ext_resource type="Script" path="res://Player/Action.gd" id="9_o2pmv"]
 
 [sub_resource type="Animation" id="Animation_4pk7g"]
 length = 0.001
@@ -1453,5 +1454,9 @@ offset_left = -39.0
 offset_top = 2.0
 offset_right = -39.0
 offset_bottom = 2.0
+
+[node name="Action" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("9_o2pmv")
+actor = NodePath("..")
 
 [connection signal="area_entered" from="PickableArea" to="PickableArea" method="_on_area_entered"]
