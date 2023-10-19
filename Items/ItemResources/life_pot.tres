@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_itflc")
-name = ""
+name = "life"
 texture = ExtResource("2_wcsvh")
 addHealth = 0
 addSanity = 0

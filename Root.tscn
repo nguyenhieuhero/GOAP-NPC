@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://d1g83kogr1u7d" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="6_2nunc"]
 [ext_resource type="PackedScene" uid="uid://bgp6i3m6a3sjr" path="res://Items/Scences/life_pot.tscn" id="8_mtoxt"]
 [ext_resource type="PackedScene" uid="uid://cdycwjtpm47ml" path="res://Objects/Tree/Tree.tscn" id="9_pd4pw"]
-[ext_resource type="PackedScene" uid="uid://bvqxm4letr6ny" path="res://Items/Scences/Log.tscn" id="10_esgpj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1c6t"]
 texture = ExtResource("1_xrp7u")
@@ -359,7 +358,6 @@ texture = ExtResource("6_2nunc")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fi3rn"]
 resource_name = "Item"
 scenes/1/scene = ExtResource("8_mtoxt")
-scenes/3/scene = ExtResource("10_esgpj")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_c3nnm"]
 resource_name = "Tree"
@@ -375,6 +373,11 @@ sources/4 = SubResource("TileSetAtlasSource_ohjmr")
 sources/5 = SubResource("TileSetAtlasSource_boktk")
 sources/6 = SubResource("TileSetScenesCollectionSource_fi3rn")
 sources/7 = SubResource("TileSetScenesCollectionSource_c3nnm")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v0vs5"]
+vertices = PackedVector2Array(-35, -18, 606, -18, 608, 352, -33, 354)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-35, -18, 606, -18, 608, 352, -33, 354)])
 
 [node name="GameWorld" type="Node2D"]
 y_sort_enabled = true
@@ -412,4 +415,7 @@ layer_3/tile_data = PackedInt32Array(458765, 7, 65536, 393235, 7, 65536)
 
 [node name="Player" parent="." instance=ExtResource("1_j3t0f")]
 z_index = 0
-position = Vector2(217, 47)
+position = Vector2(192, 51)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_v0vs5")
