@@ -24,3 +24,11 @@ func insert(item: ItemResource):
 			slots[i].quanity = 1
 			updated.emit()
 			return
+
+
+func checkItemExist(itemName):
+	if(slots[0].itemResource):
+		for slot in slots:
+			if(slot.itemResource.name == itemName):
+				return true
+		return false

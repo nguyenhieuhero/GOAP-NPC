@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://djbnrxrcq86o"]
+[gd_scene load_steps=23 format=3 uid="uid://djbnrxrcq86o"]
 
 [ext_resource type="PackedScene" uid="uid://bkmldnnp76f2v" path="res://Player/player.tscn" id="1_j3t0f"]
 [ext_resource type="Texture2D" uid="uid://cfsxy0pw3vocu" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="1_xrp7u"]
@@ -11,9 +11,7 @@
 [ext_resource type="Script" path="res://TileMap.gd" id="9_d0b4e"]
 [ext_resource type="PackedScene" uid="uid://cdycwjtpm47ml" path="res://Objects/Tree/Tree.tscn" id="9_pd4pw"]
 [ext_resource type="PackedScene" uid="uid://dc2hlcnfrbqt0" path="res://Items/Scences/Twigs.tscn" id="10_6rxec"]
-[ext_resource type="PackedScene" uid="uid://btbawd53ocwvp" path="res://DayNight/day_and_night.tscn" id="11_pmujf"]
 [ext_resource type="PackedScene" uid="uid://rav4bslalgv7" path="res://Items/Scences/Rock.tscn" id="12_hiybr"]
-[ext_resource type="PackedScene" uid="uid://bvqxm4letr6ny" path="res://Items/Scences/Log.tscn" id="13_t7wkg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1c6t"]
 texture = ExtResource("1_xrp7u")
@@ -363,7 +361,6 @@ texture = ExtResource("6_2nunc")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fi3rn"]
 resource_name = "Item"
 scenes/1/scene = ExtResource("8_mtoxt")
-scenes/2/scene = ExtResource("13_t7wkg")
 scenes/3/scene = ExtResource("12_hiybr")
 scenes/4/scene = ExtResource("10_6rxec")
 
@@ -381,6 +378,11 @@ sources/4 = SubResource("TileSetAtlasSource_ohjmr")
 sources/5 = SubResource("TileSetAtlasSource_boktk")
 sources/6 = SubResource("TileSetScenesCollectionSource_fi3rn")
 sources/7 = SubResource("TileSetScenesCollectionSource_c3nnm")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v0vs5"]
+vertices = PackedVector2Array(-35, -18, 606, -18, 608, 352, -33, 354)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-35, -18, 606, -18, 608, 352, -33, 354)])
 
 [node name="GameWorld" type="Node2D"]
 y_sort_enabled = true
@@ -419,10 +421,7 @@ script = ExtResource("9_d0b4e")
 
 [node name="Player" parent="." instance=ExtResource("1_j3t0f")]
 z_index = 0
-position = Vector2(217, 47)
+position = Vector2(192, 51)
 
-[node name="day_and_night" parent="." instance=ExtResource("11_pmujf")]
-visible = false
-position = Vector2(266, 193)
-rotation = 3.14159
-scale = Vector2(0.804976, -0.937507)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_v0vs5")

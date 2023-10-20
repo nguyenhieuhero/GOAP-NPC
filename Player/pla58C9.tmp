@@ -1404,7 +1404,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_8njta")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/conditions/is_axe = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_pick = false
@@ -1416,7 +1415,7 @@ parameters/walk/blend_position = Vector2(-0.0288, -0.161677)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kckkd")
-animation = &"idle_down"
+animation = &"pick_down"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
