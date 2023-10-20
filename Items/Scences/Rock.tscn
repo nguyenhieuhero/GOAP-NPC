@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://rav4bslalgv7"]
+
+[ext_resource type="PackedScene" uid="uid://c2bdg5p71x4bn" path="res://Items/ItemArea/ItemArea.tscn" id="1_54s8e"]
+[ext_resource type="Resource" uid="uid://d00xj8wyaq0la" path="res://Items/ItemResources/rock.tres" id="2_dwtb5"]
+[ext_resource type="Texture2D" uid="uid://dhohoolp3hhys" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/rock.png" id="3_mwaf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4cc2"]
+size = Vector2(14, 14)
+
+[node name="Rock" instance=ExtResource("1_54s8e")]
+position = Vector2(0, -10)
+itemRes = ExtResource("2_dwtb5")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_q4cc2")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -4)
+scale = Vector2(0.9, 0.875)
+texture = ExtResource("3_mwaf1")
+offset = Vector2(0, 14)
