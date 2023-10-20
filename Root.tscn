@@ -422,6 +422,7 @@ z_index = 0
 position = Vector2(217, 47)
 
 [node name="day_and_night" parent="." instance=ExtResource("11_pmujf")]
-position = Vector2(288, 351)
+visible = false
+position = Vector2(266, 193)
 rotation = 3.14159
 scale = Vector2(0.804976, -0.937507)
