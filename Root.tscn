@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bgp6i3m6a3sjr" path="res://Items/Scences/life_pot.tscn" id="8_mtoxt"]
 [ext_resource type="Script" path="res://TileMap.gd" id="9_d0b4e"]
 [ext_resource type="PackedScene" uid="uid://cdycwjtpm47ml" path="res://Objects/Tree/Tree.tscn" id="9_pd4pw"]
-
 [ext_resource type="PackedScene" uid="uid://dc2hlcnfrbqt0" path="res://Items/Scences/Twigs.tscn" id="10_6rxec"]
-[ext_resource type="PackedScene" uid="uid://btbawd53ocwvp" path="res://DayNight/day_and_night.tscn" id="11_pmujf"]
 [ext_resource type="PackedScene" uid="uid://rav4bslalgv7" path="res://Items/Scences/Rock.tscn" id="12_hiybr"]
 [ext_resource type="PackedScene" uid="uid://bvqxm4letr6ny" path="res://Items/Scences/Log.tscn" id="13_t7wkg"]
 
@@ -364,7 +362,6 @@ texture = ExtResource("6_2nunc")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fi3rn"]
 resource_name = "Item"
 scenes/1/scene = ExtResource("8_mtoxt")
-
 scenes/2/scene = ExtResource("13_t7wkg")
 scenes/3/scene = ExtResource("12_hiybr")
 scenes/4/scene = ExtResource("10_6rxec")
@@ -430,4 +427,3 @@ position = Vector2(192, 51)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_v0vs5")
-

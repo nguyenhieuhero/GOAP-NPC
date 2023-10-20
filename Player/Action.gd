@@ -1,13 +1,13 @@
 extends Node2D
 @export var actor: Actor 
 @onready var inventory: InventoryResource = preload("res://Player/Inventory.tres")
-@onready var nav:NavigationAgent2D = $"../NavigationAgent2D"
+@onready var nav: NavigationAgent2D = $"../NavigationAgent2D"
 @onready var neartNode: Node
 
 func _process(delta):
-	goTo('LifePots')
-	if(InNodeRange(actor, neartNode)):
-		pick()
+	goTo('Trees')
+	if(InRange(actor, neartNode)):
+		chop()
 
 
 
@@ -40,18 +40,17 @@ func findNearestNodeByName(objName)->Node:
 		return actor
 
 func goTo(objName):
-	actor.action_finished()
 	neartNode = findNearestNodeByName(objName)
-	if not actor.isAction:
+	if not actor.isAction and not InRange(actor,neartNode):
 		nav.target_position = neartNode.global_position
 		var dir = to_local(nav.get_next_path_position()).normalized()
 		actor.velocity = dir * actor.SPEED
-	if(InNodeRange(actor, neartNode)):
-		actor.action_started()
 
-func InNodeRange(actor: Node, node: Node):
+func InRange(actor: CharacterBody2D, node: Node):
 	var currentDis = actor.global_position.distance_to(node.global_position)
-	if(currentDis < 2): return true
+	if(currentDis < 2):
+		actor.velocity = Vector2.ZERO
+		return true
 	return false
 	
 

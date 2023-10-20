@@ -11,10 +11,13 @@ class_name Actor
 func _ready():
 	animation_tree.active=true
 func _physics_process(_delta):
-	if isAction:
-		velocity = Vector2.ZERO
+#	if not isAction:
+#		velocity = Vector2.ZERO
+	
+	update_animation_direction(velocity)
 	move_and_slide()
 func _process(delta):
+	update_state()
 	pass
 #	direction = Input.get_vector("left","right","up","down")
 #	if isAction:
