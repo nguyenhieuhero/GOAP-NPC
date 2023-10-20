@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://dkvseqdcrxgtl"]
 
 [ext_resource type="Script" path="res://Resources/Item.gd" id="1_15tiw"]
-[ext_resource type="Texture2D" uid="uid://bmdr2f3y6lfmo" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprite-0001.png" id="2_usnto"]
+[ext_resource type="Texture2D" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprite-0001.png" id="2_usnto"]
 
 [resource]
 script = ExtResource("1_15tiw")

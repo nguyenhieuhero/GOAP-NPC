@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c2bdg5p71x4bn" path="res://Items/ItemArea/ItemArea.tscn" id="1_q5li3"]
 [ext_resource type="Resource" uid="uid://dkvseqdcrxgtl" path="res://Items/ItemResources/twigs.tres" id="2_nq6yh"]
-[ext_resource type="Texture2D" uid="uid://bmdr2f3y6lfmo" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprite-0001.png" id="3_eooet"]
+[ext_resource type="Texture2D" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprite-0001.png" id="3_eooet"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abf2e"]
 radius = 4.0

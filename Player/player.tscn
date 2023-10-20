@@ -1417,6 +1417,7 @@ parameters/walk/blend_position = Vector2(-0.0288, -0.161677)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kckkd")
 animation = &"idle_down"
+frame = 1
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
