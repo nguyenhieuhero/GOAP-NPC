@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://djbnrxrcq86o"]
+[gd_scene load_steps=23 format=3 uid="uid://djbnrxrcq86o"]
 
 [ext_resource type="PackedScene" uid="uid://bkmldnnp76f2v" path="res://Player/player.tscn" id="1_j3t0f"]
 [ext_resource type="Texture2D" uid="uid://cfsxy0pw3vocu" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="1_xrp7u"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cdycwjtpm47ml" path="res://Objects/Tree/Tree.tscn" id="9_pd4pw"]
 [ext_resource type="PackedScene" uid="uid://dc2hlcnfrbqt0" path="res://Items/Scences/Twigs.tscn" id="10_6rxec"]
 [ext_resource type="PackedScene" uid="uid://rav4bslalgv7" path="res://Items/Scences/Rock.tscn" id="12_hiybr"]
-[ext_resource type="PackedScene" uid="uid://bvqxm4letr6ny" path="res://Items/Scences/Log.tscn" id="13_t7wkg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1c6t"]
 texture = ExtResource("1_xrp7u")
@@ -362,7 +361,6 @@ texture = ExtResource("6_2nunc")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fi3rn"]
 resource_name = "Item"
 scenes/1/scene = ExtResource("8_mtoxt")
-scenes/2/scene = ExtResource("13_t7wkg")
 scenes/3/scene = ExtResource("12_hiybr")
 scenes/4/scene = ExtResource("10_6rxec")
 

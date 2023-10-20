@@ -6,7 +6,7 @@ extends Node2D
 
 func _process(delta):
 	goTo('Trees')
-	if(InRange(actor, neartNode)):
+	if(isObjExist()):
 		chop()
 
 
@@ -52,6 +52,9 @@ func InRange(actor: CharacterBody2D, node: Node):
 		actor.velocity = Vector2.ZERO
 		return true
 	return false
+
+func isObjExist():
+	return neartNode != actor && InRange(actor, neartNode)
 	
 
 	
