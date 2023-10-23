@@ -1,6 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://djbnrxrcq86o"]
 
+
 [ext_resource type="Script" path="res://Root.gd" id="1_fgqh5"]
+
 [ext_resource type="PackedScene" uid="uid://bkmldnnp76f2v" path="res://Player/player.tscn" id="1_j3t0f"]
 [ext_resource type="Texture2D" uid="uid://cfsxy0pw3vocu" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="1_xrp7u"]
 [ext_resource type="Texture2D" uid="uid://b5gnt3o4xmbr6" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Hills.png" id="2_waxdi"]
@@ -490,5 +492,6 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_qgtyh")
 }
+
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
