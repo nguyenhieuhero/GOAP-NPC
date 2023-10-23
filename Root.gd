@@ -1,22 +1,26 @@
-extends StaticBody2D
+extends Node2D
 var state = "day"
 var change_state = false
 
-var length_of_day = 20
+var length_of_day = 10
 var length_of_night = 10
 
 func _ready():
 	if state == "day": 
-		$ColorRect.color.a = 0 
+		print('day')
+		$".".modulate = Color(1,1,1,1);
+		print($".".modulate)
 	elif state == "night": 
-		$ColorRect.color.a = 120
-		
-
+		print('night')
+		$".".modulate = Color(172,172,172,120);
+		print($".".modulate)
 func _on_timer_timeout():
 	if state == "day": 
 		state = "night"
-	elif state == "night": 
+		print('state'+state)
+	elif state == "night":
 		state = "day"
+		print('state'+state) 
 	change_state = true
 func _process(delta):
 	if change_state == true: 
@@ -36,3 +40,4 @@ func change_to_night():
 	$Timer.wait_time = length_of_night
 	$Timer.start()	
 	$Timer["autostart"] = true
+
