@@ -4,7 +4,7 @@ class_name Actor
 @export var SPEED: float = 50
 @export var direction: Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
-@onready var inventory = $Inventory
+@onready var inventory = $GUI/Inventory
 @onready var isAction = false
 @onready var nav:NavigationAgent2D = $NavigationAgent2D
 
