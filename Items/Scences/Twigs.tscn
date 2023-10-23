@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c2bdg5p71x4bn" path="res://Items/ItemArea/ItemArea.tscn" id="1_q5li3"]
 [ext_resource type="Resource" uid="uid://dkvseqdcrxgtl" path="res://Items/ItemResources/twigs.tres" id="2_nq6yh"]
-[ext_resource type="Texture2D" uid="uid://bmdr2f3y6lfmo" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprite-0001.png" id="3_eooet"]
+[ext_resource type="Texture2D" uid="uid://wlb5i8ej4uo1" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Twigs.png" id="3_cmdmu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abf2e"]
 radius = 4.0
@@ -19,5 +19,5 @@ shape = SubResource("CapsuleShape2D_abf2e")
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, 9)
 scale = Vector2(0.9, 0.875)
-texture = ExtResource("3_eooet")
+texture = ExtResource("3_cmdmu")
 offset = Vector2(0, -1)
