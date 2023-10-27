@@ -26,4 +26,4 @@ quanity = 0
 [resource]
 script = ExtResource("1_o4pj2")
 slots = Array[ExtResource("2_d5f8j")]([SubResource("Resource_okjfs"), SubResource("Resource_jj64l"), SubResource("Resource_8ufa1"), SubResource("Resource_l6pk4"), SubResource("Resource_kw6yx")])
-maxInSLot = 9
+maxInSlot = 1

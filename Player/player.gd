@@ -6,14 +6,14 @@ class_name Actor
 @onready var animation_tree = $AnimationTree
 @onready var inventory = $Inventory
 @onready var isAction = false
-@onready var nav:NavigationAgent2D = $NavigationAgent2D
+@onready var nav: NavigationAgent2D = $"./NavigationAgent2D"
+@onready var agent = GoapAgent.new()
 
 func _ready():
-	animation_tree.active=true
+	animation_tree.active = true
+	agent.init(self,[])
+	add_child(agent)
 func _physics_process(_delta):
-#	if not isAction:
-#		velocity = Vector2.ZERO
-	
 	update_animation_direction(velocity)
 	move_and_slide()
 func _process(delta):
@@ -52,12 +52,16 @@ func action_finished():
 	isAction=false
 
 func set_idle():
+	velocity = Vector2.ZERO
 	animation_tree.set("parameters/conditions/is_walk", false)
 	animation_tree.set("parameters/conditions/is_idle", true)
 	
-
-
-	
+func goTo(objName):
+	var neartNode: Node = WorldState.get_closest_element(self,objName)
+	if not isAction and not WorldState.isNear(self,neartNode):
+		nav.target_position = neartNode.global_position
+		var dir = to_local(nav.get_next_path_position()).normalized()
+		velocity = dir * SPEED
 	
 
 

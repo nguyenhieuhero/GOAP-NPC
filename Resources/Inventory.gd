@@ -3,23 +3,24 @@ class_name InventoryResource
 
 signal updated
 @export var slots: Array[InventorySlot]
-@export var maxInSLot :int = 9
+@export var maxInSlot : int = 9
 
-func isSlotAvailabel(item: ItemResource) -> bool:
+func isFullSlot():
 	for slot in slots:
-		if slot.itemResource == item and slot.quanity >= maxInSLot:
+		if !slot.itemResource or slot.quanity < maxInSlot:
 			return false
 	return true
 func insert(item: ItemResource):
 	for slot in slots:
-		if slot.itemResource == item:
+		if slot.itemResource == item and slot.quanity < maxInSlot:
+			print("add")
 			slot.quanity += 1
 			updated.emit()
 			return
 	
-	
 	for i in range(slots.size()):
 		if !slots[i].itemResource:
+			print("create")
 			slots[i].itemResource = item
 			slots[i].quanity = 1
 			updated.emit()

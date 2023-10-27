@@ -1,15 +1,11 @@
 extends Node2D
 @export var actor: Actor 
 @onready var inventory: InventoryResource = preload("res://Player/Inventory.tres")
-@onready var nav: NavigationAgent2D = $"../NavigationAgent2D"
 @onready var neartNode: Node
 
 func _process(delta):
-	goTo('Trees')
-	if(isObjExist()):
-		chop()
-
-
+	var x=PickUpLifePot.new()
+	x.perform(actor,delta)
 
 
 func _input(event):	
@@ -18,43 +14,41 @@ func _input(event):
 			
 			
 func chop():
-	actor.set_idle()
-	actor.animation_tree.set("parameters/conditions/is_axe", true)
+	var closest_tree = WorldState.get_closest_element(actor,'Trees')
+	if closest_tree:
+		if WorldState.isNear(actor,closest_tree):
+			actor.set_idle()
+			actor.animation_tree.set("parameters/conditions/is_axe", true)
+		else:
+			goTo('Trees')
 func pick():
-	actor.set_idle()
-	actor.animation_tree.set("parameters/conditions/is_pick", true)
+	var closest_tree = WorldState.get_closest_element(actor,'LifePots')
+	if closest_tree:
+		if WorldState.isNear(actor,closest_tree):
+			actor.set_idle()
+			actor.animation_tree.set("parameters/conditions/is_pick", true)
+		else:
+			goTo('LifePots')
 	
-func findNearestNodeByName(objName)->Node:
-	var nodes:Array[Node] = get_tree().get_nodes_in_group(objName);
-	var minDistance = 99999999;
-	var nearestNode:Node
-	
-	if(nodes):
-		for node in nodes:
-			var currentDis = actor.global_position.distance_to(node.global_position)
-			if(currentDis < minDistance):
-				minDistance = currentDis
-				nearestNode = node
-		return nearestNode
-	else:
-		return actor
+#func findNearestNodeByName(objName)->Node:
+#	var nodes:Array[Node] = get_tree().get_nodes_in_group(objName);
+#	var minDistance = 99999999;
+#	var nearestNode:Node
+#
+#	if(nodes):
+#		for node in nodes:
+#			var currentDis = actor.global_position.distance_to(node.global_position)
+#			if(currentDis < minDistance):
+#				minDistance = currentDis
+#				nearestNode = node
+#		return nearestNode
+#	else:
+#		return actor
 
 func goTo(objName):
-	neartNode = findNearestNodeByName(objName)
-	if not actor.isAction and not InRange(actor,neartNode):
-		nav.target_position = neartNode.global_position
-		var dir = to_local(nav.get_next_path_position()).normalized()
-		actor.velocity = dir * actor.SPEED
+	return actor.goTo(objName)
 
-func InRange(actor: CharacterBody2D, node: Node):
-	var currentDis = actor.global_position.distance_to(node.global_position)
-	if(currentDis < 2):
-		actor.velocity = Vector2.ZERO
-		return true
-	return false
 
-func isObjExist():
-	return neartNode != actor && InRange(actor, neartNode)
 	
 
 	

@@ -18,6 +18,12 @@ func toggle():
 	isOpen = !isOpen
 	visible = isOpen
 
-
+func getAllItems():
+	var items = {}
+	for slot in inventory.slots:
+		if !slot.itemResource:
+			continue
+		items[slot.itemResource.name]=slot.quanity
+	return items
 
 
