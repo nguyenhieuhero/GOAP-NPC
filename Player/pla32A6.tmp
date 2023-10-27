@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://bkmldnnp76f2v"]
+[gd_scene load_steps=92 format=3 uid="uid://bkmldnnp76f2v"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_wmt3j"]
 [ext_resource type="Texture2D" uid="uid://xin6rec66v64" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Actions.png" id="2_6dxic"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dqs07oorwpygl" path="res://Inventory/PickableArea/PickableArea.tscn" id="4_uq7db"]
 [ext_resource type="PackedScene" uid="uid://b5exwdq0s0hc2" path="res://Common/Scenes/Hitbox.tscn" id="5_s1eks"]
 [ext_resource type="PackedScene" uid="uid://dg2j5eunrih2p" path="res://Common/Scenes/Stat.tscn" id="6_f7fk4"]
-[ext_resource type="Resource" uid="uid://8ast4l400q0n" path="res://Player/Inventory.tres" id="6_tt6ik"]
 [ext_resource type="PackedScene" uid="uid://cabkpewe0qij7" path="res://Inventory/Inventory.tscn" id="7_307r4"]
 [ext_resource type="Script" path="res://Player/Action.gd" id="9_o2pmv"]
 
@@ -1418,7 +1417,6 @@ parameters/walk/blend_position = Vector2(-0.0288, -0.161677)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kckkd")
 animation = &"idle_down"
-frame = 1
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1428,7 +1426,6 @@ shape = SubResource("RectangleShape2D_7q5ok")
 
 [node name="PickableArea" parent="." instance=ExtResource("4_uq7db")]
 position = Vector2(0, -6)
-inventory = ExtResource("6_tt6ik")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickableArea"]
 shape = SubResource("CircleShape2D_b206k")
