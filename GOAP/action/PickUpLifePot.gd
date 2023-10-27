@@ -22,7 +22,7 @@ func perform(actor: Actor,delta):
 	var closest_tree = WorldState.get_closest_element(actor,'LifePots')
 	if closest_tree:
 		if WorldState.isNear(actor,closest_tree):
-			WorldState.set_state("has_log",true)
+#			WorldState.set_state("has_log",true)
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_pick", true)
 		else:
