@@ -399,7 +399,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = -10
-layer_2/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 589841, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 655377, 6, 65536, 720913, 6, 65536, 786449, 6, 65536, 851985, 6, 65536, 917521, 6, 65536, 983057, 6, 65536, 720908, 6, 131072, 786443, 6, 131072, 851980, 6, 131072, 720902, 6, 65536, 720904, 6, 262144, 720905, 6, 262144)
+layer_2/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 917521, 6, 65536)
 layer_3/name = "Ground"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
@@ -408,60 +408,3 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 2
 layer_3/tile_data = PackedInt32Array(458765, 7, 65536, 393235, 7, 65536)
 script = ExtResource("11_irird")
-
-[node name="_Area2D_19188" parent="." instance=ExtResource("8_afd26")]
-position = Vector2(104, 142)
-
-[node name="_Area2D_19189" parent="." instance=ExtResource("8_afd26")]
-position = Vector2(120, 158)
-
-[node name="_Area2D_19190" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(104, 178)
-
-[node name="_Area2D_19191" parent="." instance=ExtResource("9_af88o")]
-position = Vector2(136, 174)
-
-[node name="_Area2D_19192" parent="." instance=ExtResource("9_af88o")]
-position = Vector2(152, 174)
-
-[node name="_Area2D_19193" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 258)
-
-[node name="_Area2D_19194" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(264, 50)
-
-[node name="_Area2D_19195" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 146)
-
-[node name="_Area2D_19196" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 162)
-
-[node name="_Area2D_19197" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 178)
-
-[node name="_Area2D_19198" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 194)
-
-[node name="_Area2D_19199" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 210)
-
-[node name="_Area2D_19200" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 226)
-
-[node name="_Area2D_19201" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(280, 242)
-
-[node name="_Area2D_19202" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(408, 98)
-
-[node name="_Area2D_19203" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(456, 178)
-
-[node name="_Area2D_19204" parent="." instance=ExtResource("7_pd1rt")]
-position = Vector2(472, 50)
-
-[node name="_StaticBody2D_19205" parent="." instance=ExtResource("10_vkx0h")]
-position = Vector2(312, 92)
-
-[node name="_StaticBody2D_19206" parent="." instance=ExtResource("10_vkx0h")]
-position = Vector2(216, 108)
