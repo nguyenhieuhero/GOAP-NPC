@@ -15,6 +15,6 @@ func _process(delta):
 
 func _on_area_entered(area: Hitbox):
 	currentHealth-=area.dame
-	print(currentHealth)
+#	print(currentHealth)
 	if(currentHealth<0):
 		get_parent().queue_free()

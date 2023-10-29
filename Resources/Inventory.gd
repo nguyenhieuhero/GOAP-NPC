@@ -35,9 +35,18 @@ func useItem(itemName):
 				slot.itemResource = null;
 	updated.emit()
 
+func useItem(itemName):
+	for slot in slots:
+		if(slot.itemResource && slot.itemResource.name == itemName):
+			if(slot.quanity > 0):    
+				slot.quanity -=1;
+			if(slot.quanity == 0): 
+				slot.itemResource = null;
+				
+	updated.emit()
+
 func checkItemExist(itemName):
 	for slot in slots:
 		if(slot.itemResource && slot.itemResource.name == itemName):
 			return true
 	return false
-

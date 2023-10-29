@@ -24,7 +24,10 @@ func _input(event):
 	if(Input.is_action_pressed("toggle_inventory")):
 			actor.inventory.toggle()
 			
-			
+func createFire(): 
+	inventory.useItem('log')
+	GlobalTileMap.addFire(actor.position)
+				
 func chop():
 	if(inventory.checkItemExist('axe')):
 		var closest_tree = WorldState.get_closest_element(actor,'Trees')
@@ -36,7 +39,7 @@ func chop():
 				goTo('Trees')
 	else:
 		craftAxe();
-		
+
 func pick(groupName: String):
 	var closest_tree = WorldState.get_closest_element(actor,groupName)
 	if closest_tree:
@@ -47,19 +50,19 @@ func pick(groupName: String):
 			goTo(groupName)
 	
 #func findNearestNodeByName(objName)->Node:
-#	var nodes:Array[Node] = get_tree().get_nodes_in_group(objName);
-#	var minDistance = 99999999;
-#	var nearestNode:Node
+#    var nodes:Array[Node] = get_tree().get_nodes_in_group(objName);
+#    var minDistance = 99999999;
+#    var nearestNode:Node
 #
-#	if(nodes):
-#		for node in nodes:
-#			var currentDis = actor.global_position.distance_to(node.global_position)
-#			if(currentDis < minDistance):
-#				minDistance = currentDis
-#				nearestNode = node
-#		return nearestNode
-#	else:
-#		return actor
+#    if(nodes):
+#        for node in nodes:
+#            var currentDis = actor.global_position.distance_to(node.global_position)
+#            if(currentDis < minDistance):
+#                minDistance = currentDis
+#                nearestNode = node
+#        return nearestNode
+#    else:
+#        return actor
 
 func goTo(objName):
 	return actor.goTo(objName)

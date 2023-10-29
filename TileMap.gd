@@ -1,9 +1,10 @@
 extends TileMap
 
-const log = preload("res://Items/Scences/Log.tscn")
-func addLog(pos: Vector2):
-	var _log = log.instantiate()
-	_log.global_position = pos
-	print(_log)
-	get_parent().add_child(_log)
-	
+const fire = preload("res://Objects/Fire/Fire.tscn")
+func addFire(pos: Vector2):
+	var _fire = fire.instantiate()
+	_fire.global_position = pos
+	add_child(_fire)
+	_fire.get_node("AnimationPlayer").play("fire")
+	await _fire.get_node("AnimationPlayer").animation_finished	
+	_fire.queue_free()
