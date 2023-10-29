@@ -477,11 +477,12 @@ script = ExtResource("12_2dqm8")
 
 [node name="Player" parent="." instance=ExtResource("1_j3t0f")]
 z_index = 0
-position = Vector2(192, 51)
+position = Vector2(149, 147)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(1, 1)
 navigation_polygon = SubResource("NavigationPolygon_v0vs5")
+
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

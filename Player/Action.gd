@@ -1,17 +1,26 @@
 extends Node2D
 @export var actor: Actor 
 @onready var inventory: InventoryResource = preload("res://Player/Inventory.tres")
+@onready var axeRes = preload("res://Items/ItemResources/axe.tres")
 @onready var neartNode: Node
 
 func _process(delta):
-#	var x=PickUpLifePot.new()
-#	x.perform(actor,delta)
-	if !inventory.checkItemExist('log'): 
-		chop()
-		pick("Logs")
-	else: 
-		createFire()
-func _input(event):    
+	chop()
+
+func craftAxe():
+	if(!inventory.checkItemExist('rock')):
+		pick('Rocks')
+	if(!inventory.checkItemExist('twig')):
+		pick('Twigs')
+	
+	if(inventory.checkItemExist('rock') && inventory.checkItemExist('twig')):
+		inventory.useItem('rock')
+		inventory.useItem('twig')
+		actor.set_idle()
+		actor.animationPlayer.play('craft_axe');
+		inventory.insert(axeRes)
+
+func _input(event):	
 	if(Input.is_action_pressed("toggle_inventory")):
 			actor.inventory.toggle()
 			
@@ -20,13 +29,17 @@ func createFire():
 	GlobalTileMap.addFire(actor.position)
 				
 func chop():
-	var closest_tree = WorldState.get_closest_element(actor,'Trees')
-	if closest_tree:
-		if WorldState.isNear(actor,closest_tree):
-			actor.set_idle()
-			actor.animation_tree.set("parameters/conditions/is_axe", true)
-		else:
-			goTo('Trees')
+	if(inventory.checkItemExist('axe')):
+		var closest_tree = WorldState.get_closest_element(actor,'Trees')
+		if closest_tree:
+			if WorldState.isNear(actor,closest_tree):
+				actor.set_idle()
+				actor.animation_tree.set("parameters/conditions/is_axe", true)
+			else:
+				goTo('Trees')
+	else:
+		craftAxe();
+
 func pick(groupName: String):
 	var closest_tree = WorldState.get_closest_element(actor,groupName)
 	if closest_tree:

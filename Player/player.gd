@@ -9,6 +9,7 @@ var currentHealth: int = maxHealth
 @onready var isAction = false
 @onready var nav: NavigationAgent2D = $"./NavigationAgent2D"
 @onready var agent = GoapAgent.new()
+@onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	animation_tree.active = true
