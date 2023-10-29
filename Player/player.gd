@@ -58,9 +58,9 @@ func set_idle():
 	animation_tree.set("parameters/conditions/is_idle", true)
 	
 func goTo(objName):
-	var neartNode: Node = WorldState.get_closest_element(self,objName)
-	if not isAction and not WorldState.isNear(self,neartNode):
-		nav.target_position = neartNode.global_position
+	var nearNode: Node = WorldState.get_closest_element(self,objName)
+	if not isAction and not WorldState.isNear(self,nearNode):
+		nav.target_position = nearNode.global_position
 		var dir = to_local(nav.get_next_path_position()).normalized()
 		velocity = dir * SPEED
 	

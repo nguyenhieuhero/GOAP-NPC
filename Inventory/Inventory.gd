@@ -1,6 +1,6 @@
 extends Control
 
-@onready var inventory: InventoryResource = preload("res://Player/Inventory.tres")
+@export var inventory: InventoryResource
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 var isOpen: bool = false
 

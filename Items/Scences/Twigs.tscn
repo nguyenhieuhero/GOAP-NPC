@@ -6,7 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx5ic"]
 
-
 [node name="Twig" groups=["Twigs"] instance=ExtResource("1_q5li3")]
 itemRes = ExtResource("2_nq6yh")
 

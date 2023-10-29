@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://6xe5buwm1ewj" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="6_dqlv6"]
 [ext_resource type="Texture2D" uid="uid://d1g83kogr1u7d" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="7_hbq0p"]
 [ext_resource type="PackedScene" uid="uid://bgp6i3m6a3sjr" path="res://Items/Scences/life_pot.tscn" id="8_x13im"]
-[ext_resource type="PackedScene" uid="uid://rav4bslalgv7" path="res://Items/Scences/Rock.tscn" id="9_13jcp"]
-[ext_resource type="PackedScene" uid="uid://dc2hlcnfrbqt0" path="res://Items/Scences/Twigs.tscn" id="10_i0kik"]
+[ext_resource type="PackedScene" uid="uid://dcbcyf8ferdof" path="res://Items/Scences/Rock.tscn" id="9_13jcp"]
+[ext_resource type="PackedScene" uid="uid://cl4k460a3ct4n" path="res://Items/Scences/Twigs.tscn" id="10_i0kik"]
 [ext_resource type="PackedScene" uid="uid://cdycwjtpm47ml" path="res://Objects/Tree/Tree.tscn" id="11_ln1v0"]
 [ext_resource type="Script" path="res://TileMap.gd" id="12_2dqm8"]
 
@@ -465,7 +465,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = -10
-layer_2/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 917521, 6, 65536, 196614, 6, 65536, 393225, 6, 65536, 262156, 6, 65536, 458771, 6, 65536, 589839, 6, 65536, 720905, 6, 65536, 458756, 6, 65536, 524289, 6, 65536)
+layer_2/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 917521, 6, 65536, 196614, 6, 65536, 393225, 6, 65536, 262156, 6, 65536, 458771, 6, 65536, 589839, 6, 65536, 720905, 6, 65536, 458756, 6, 65536, 524289, 6, 65536, 655376, 6, 262144, 196616, 6, 262144)
 layer_3/name = "Ground"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
@@ -482,7 +482,6 @@ position = Vector2(149, 147)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(1, 1)
 navigation_polygon = SubResource("NavigationPolygon_v0vs5")
-
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
