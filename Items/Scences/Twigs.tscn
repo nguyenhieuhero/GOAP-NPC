@@ -1,23 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc2hlcnfrbqt0"]
+[gd_scene load_steps=5 format=3 uid="uid://cl4k460a3ct4n"]
 
 [ext_resource type="PackedScene" uid="uid://c2bdg5p71x4bn" path="res://Items/ItemArea/ItemArea.tscn" id="1_q5li3"]
-[ext_resource type="Resource" uid="uid://dkvseqdcrxgtl" path="res://Items/ItemResources/twigs.tres" id="2_nq6yh"]
+[ext_resource type="Resource" uid="uid://7ak54x7yyohv" path="res://Items/ItemResources/twigs.tres" id="2_nq6yh"]
 [ext_resource type="Texture2D" uid="uid://bmdr2f3y6lfmo" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprite-0001.png" id="3_eooet"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abf2e"]
-radius = 4.0
-height = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx5ic"]
 
-[node name="Rock" instance=ExtResource("1_q5li3")]
-position = Vector2(0, -10)
+[node name="Twig" groups=["Twigs"] instance=ExtResource("1_q5li3")]
 itemRes = ExtResource("2_nq6yh")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_abf2e")
+shape = SubResource("RectangleShape2D_jx5ic")
 
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, 9)
+position = Vector2(0, 2)
 scale = Vector2(0.9, 0.875)
 texture = ExtResource("3_eooet")
 offset = Vector2(0, -1)
