@@ -8,7 +8,7 @@
 radius = 4.0
 height = 14.0
 
-[node name="Rock" instance=ExtResource("1_q5li3")]
+[node name="Twigs" instance=ExtResource("1_q5li3")]
 position = Vector2(0, -10)
 itemRes = ExtResource("2_nq6yh")
 

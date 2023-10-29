@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.1", "Mobile")
 
 [autoload]
 
-GlobalTileMap="*res://TileMap.gd"
 WorldState="*res://GOAP/WorldState.gd"
+GlobalTileMap="*res://TileMap.gd"
 
 [display]
 

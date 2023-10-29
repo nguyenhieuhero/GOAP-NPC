@@ -27,9 +27,18 @@ func insert(item: ItemResource):
 			return
 
 
+func useItem(itemName):
+	for slot in slots:
+		if(slot.itemResource && slot.itemResource.name == itemName):
+			if(slot.quanity > 0):    
+				slot.quanity -=1;
+			if(slot.quanity == 0): 
+				slot.itemResource = null;
+				
+	updated.emit()
+
 func checkItemExist(itemName):
-	if(slots[0].itemResource):
-		for slot in slots:
-			if(slot.itemResource.name == itemName):
-				return true
-		return false
+	for slot in slots:
+		if(slot.itemResource && slot.itemResource.name == itemName):
+			return true
+	return false

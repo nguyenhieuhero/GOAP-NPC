@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Actor
-
+@export var maxHealth: int = 100
+var currentHealth: int = maxHealth
 @export var SPEED: float = 50
 @export var direction: Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
@@ -24,7 +25,6 @@ func _process(delta):
 #		return
 #	if direction != Vector2.ZERO:
 #		update_animation_direction(direction)	
-#
 #	update_state()
 
 	

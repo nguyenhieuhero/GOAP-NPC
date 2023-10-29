@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://bkmldnnp76f2v"]
+[gd_scene load_steps=96 format=3 uid="uid://bkmldnnp76f2v"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_wmt3j"]
 [ext_resource type="Texture2D" uid="uid://xin6rec66v64" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Actions.png" id="2_6dxic"]
@@ -10,6 +10,9 @@
 [ext_resource type="Resource" uid="uid://8ast4l400q0n" path="res://Player/Inventory.tres" id="6_tt6ik"]
 [ext_resource type="PackedScene" uid="uid://cabkpewe0qij7" path="res://Inventory/Inventory.tscn" id="7_307r4"]
 [ext_resource type="Script" path="res://Player/Action.gd" id="9_o2pmv"]
+[ext_resource type="Texture2D" uid="uid://c1l48n3h1fkvn" path="res://Art/healthbarUnder.png" id="11_qwwc3"]
+[ext_resource type="Texture2D" uid="uid://betdhd4qat4k7" path="res://Art/healthbarProgress.png" id="12_sq8dp"]
+[ext_resource type="Script" path="res://Player/healthbar.gd" id="13_8cf2o"]
 
 [sub_resource type="Animation" id="Animation_4pk7g"]
 length = 0.001
@@ -1464,5 +1467,17 @@ actor = NodePath("..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
+
+[node name="healthbar" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="healthbar"]
+offset_left = -30.0
+offset_top = -48.0
+offset_right = 34.0
+offset_bottom = -38.0
+texture_under = ExtResource("11_qwwc3")
+texture_progress = ExtResource("12_sq8dp")
+script = ExtResource("13_8cf2o")
 
 [connection signal="area_entered" from="PickableArea" to="PickableArea" method="_on_area_entered"]

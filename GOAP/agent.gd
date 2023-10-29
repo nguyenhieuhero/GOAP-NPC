@@ -28,7 +28,7 @@ func _process(delta):
 			}
 		for s in WorldState.state:
 			state[s] = WorldState.state[s]
-		print(state)
+#		print(state)
 	else:
 		_follow_plan(current_plan, delta)
 

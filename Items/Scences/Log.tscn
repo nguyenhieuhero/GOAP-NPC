@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4cc2"]
 size = Vector2(16, 7)
 
-[node name="Log" instance=ExtResource("1_h47vg")]
+[node name="Log" groups=["Logs"] instance=ExtResource("1_h47vg")]
 itemRes = ExtResource("2_apcxo")
 
 [node name="CollisionShape2D" parent="." index="0"]

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_foxgt")
-name = ""
+name = "log"
 texture = ExtResource("2_wlsxa")
 addHealth = 0
 addSanity = 0
