@@ -11,10 +11,8 @@ size = Vector2(16, 7)
 itemRes = ExtResource("2_apcxo")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_q4cc2")
 
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, -4)
 texture = ExtResource("3_myaxs")
-offset = Vector2(0, 5)
