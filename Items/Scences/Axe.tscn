@@ -5,11 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://i7i0q7ngig0w" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic tools and meterials.png" id="3_lv7px"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx5ic"]
+size = Vector2(14, 14)
 
 [node name="Axe" groups=["Axes"] instance=ExtResource("1_fyl71")]
 itemRes = ExtResource("2_4xf13")
 
 [node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jx5ic")
 
 [node name="Sprite2D" parent="." index="1"]

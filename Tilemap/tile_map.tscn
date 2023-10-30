@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://6xe5buwm1ewj" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="5_bmt0d"]
 [ext_resource type="Texture2D" uid="uid://d1g83kogr1u7d" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="6_23xvd"]
 [ext_resource type="PackedScene" uid="uid://bgp6i3m6a3sjr" path="res://Items/Scences/life_pot.tscn" id="7_pd1rt"]
-[ext_resource type="PackedScene" uid="uid://rav4bslalgv7" path="res://Items/Scences/Rock.tscn" id="8_afd26"]
-[ext_resource type="PackedScene" uid="uid://dc2hlcnfrbqt0" path="res://Items/Scences/Twigs.tscn" id="9_af88o"]
+[ext_resource type="PackedScene" uid="uid://dcbcyf8ferdof" path="res://Items/Scences/Rock.tscn" id="8_afd26"]
+[ext_resource type="PackedScene" uid="uid://cl4k460a3ct4n" path="res://Items/Scences/Twigs.tscn" id="9_af88o"]
 [ext_resource type="PackedScene" uid="uid://cdycwjtpm47ml" path="res://Objects/Tree/Tree.tscn" id="10_vkx0h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1c6t"]

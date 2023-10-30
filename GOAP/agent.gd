@@ -21,22 +21,21 @@ var actor: Actor
 func _process(delta):
 #	var goal = _get_best_goal()
 #	if current_goal == null or goal != current_goal:
-	if true:
-		state = {
-			"position": actor.position,
-			"inventory": actor.inventory.getAllItems()
-			}
-		for s in WorldState.state:
-			state[s] = WorldState.state[s]
-#		print(state)
-	else:
-		_follow_plan(current_plan, delta)
+	state = {
+#			"position": actor.position,
+		}
+	for s in actor.inventory.getExistedItems():
+		state['has_'+s] = true
+	for s in WorldState.world_state:
+		state[s] = WorldState.world_state[s]
 
 
 func init(_actor, _goals: Array):
 	actor = _actor
 	goals = _goals
 
+func get_state(state_name, default = null):
+	return state.get(state_name, default)
 
 func _get_best_goal():
 	var highest_priority

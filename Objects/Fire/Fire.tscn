@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl3jd88xnfl26"]
+[gd_scene load_steps=7 format=3 uid="uid://dl3jd88xnfl26"]
 
+[ext_resource type="Script" path="res://Objects/Fire/Fire.gd" id="1_q8coo"]
 [ext_resource type="Texture2D" uid="uid://baxv6c633txsb" path="res://Art/NinjaAdventure/FX/Particle/Fire.png" id="2_rdcvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmc4v"]
-size = Vector2(7.5, 9.16667)
+size = Vector2(6, 5.08333)
 
 [sub_resource type="Animation" id="Animation_q32as"]
 length = 0.001
@@ -44,16 +45,16 @@ _data = {
 }
 
 [node name="Fire" type="StaticBody2D"]
+script = ExtResource("1_q8coo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -9)
+position = Vector2(1, -7)
 scale = Vector2(2, 2)
 texture = ExtResource("2_rdcvp")
 hframes = 12
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -6)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_kmc4v")
 

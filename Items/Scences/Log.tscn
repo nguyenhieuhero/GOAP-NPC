@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dcc1psr3nefog" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/log.png" id="3_myaxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4cc2"]
-size = Vector2(16, 7)
+size = Vector2(16, 15)
 
 [node name="Log" groups=["Logs"] instance=ExtResource("1_h47vg")]
 itemRes = ExtResource("2_apcxo")

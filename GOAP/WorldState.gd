@@ -1,20 +1,27 @@
 extends Node
 
+var existed_group = ['Trees','LifePots','Rocks','Twigs', 'Logs']
 
-var state = {
+var world_state = {
 }
 
-
+func _process(delta):
+	world_state = {}
+	for group in existed_group:
+		if get_elements(group):
+			set_state('see_'+group,true)
+	
+	
 func get_state(state_name, default = null):
-	return state.get(state_name, default)
+	return world_state.get(state_name, default)
 
 
 func set_state(state_name, value):
-	state[state_name] = value
+	world_state[state_name] = value
 
 
 func clear_state():
-	state = {}
+	world_state = {}
 
 
 func get_elements(group_name):
@@ -38,7 +45,7 @@ func isNear(actor: CharacterBody2D, node2: Node):
 	if(actor == null or node2 == null):
 		return false
 	var currentDis = actor.global_position.distance_to(node2.global_position)
-	if currentDis < 2:
+	if currentDis < 5:
 		return true
 	return false
 
