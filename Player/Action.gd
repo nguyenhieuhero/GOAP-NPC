@@ -5,12 +5,17 @@ extends Node2D
 @onready var neartNode: Node
 
 func _process(delta):
+#	if !actor.agent.get_state('see_Twigs') and !actor.agent.get_state('has_twig'):
+#		PickUpTwig.new().perform(actor,delta)
+#	if actor.agent.get_state('see_Rocks') and !actor.agent.get_state('has_rock'):
+#		PickUpRock.new().perform(actor,delta)
+	ChopTree.new().perform(actor,delta)
 	killSlime()
 func craftAxe():
-	if(!inventory.checkItemExist('rock')):
-		pick('Rocks')
-	if(!inventory.checkItemExist('twig')):
-		pick('Twigs')
+#	if(!inventory.checkItemExist('rock')):
+#		pick('Rocks')
+#	if(!inventory.checkItemExist('twig')):
+#		pick('Twigs')
 
 	if(inventory.checkItemExist('rock') && inventory.checkItemExist('twig')):
 		inventory.useItem('rock')
@@ -23,7 +28,7 @@ func _input(event):
 	if(Input.is_action_pressed("toggle_inventory")):
 			actor.inventory.toggle()
 			
-func createFire(): 
+func createFire():
 	inventory.useItem('log')
 	GlobalTileMap.addFire(actor.position)
 				
@@ -35,18 +40,19 @@ func createFire():
 #				actor.set_idle()
 #				actor.animation_tree.set("parameters/conditions/is_axe", true)
 #			else:
-#				goTo('Trees')
+#				actor.goTo('Trees')
 #	else:
 #		craftAxe();
+#
+#func pick(groupName: String):
+#	var closest_tree = WorldState.get_closest_element(actor,groupName)
+#	if closest_tree:
+#		if WorldState.isNear(actor,closest_tree):
+#			actor.set_idle()
+#			actor.animation_tree.set("parameters/conditions/is_pick", true)
+#		else:
+#			actor.goTo(groupName)
 
-func pick(groupName: String):
-	var closest_tree = WorldState.get_closest_element(actor,groupName)
-	if closest_tree:
-		if WorldState.isNear(actor,closest_tree):
-			actor.set_idle()
-			actor.animation_tree.set("parameters/conditions/is_pick", true)
-		else:
-			actor.goTo(groupName)
 	
 #func findNearestNodeByName(objName)->Node:
 #    var nodes:Array[Node] = get_tree().get_nodes_in_group(objName);

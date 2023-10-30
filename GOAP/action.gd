@@ -1,10 +1,7 @@
 extends Node
 class_name GoapAction
 
-func is_valid() -> bool:
-	return true
-	
-func get_cost(_blackboard) -> int:
+func get_cost(state) -> int:
 	return 1000
 
 func get_preconditions() -> Dictionary:

@@ -5,11 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bmdr2f3y6lfmo" path="res://Art/Sprout Lands - Sprites - Basic pack/Sprite-0001.png" id="3_eooet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx5ic"]
+size = Vector2(15, 14)
 
 [node name="Twig" groups=["Twigs"] instance=ExtResource("1_q5li3")]
+position = Vector2(0, -1)
 itemRes = ExtResource("2_nq6yh")
 
 [node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jx5ic")
 
 [node name="Sprite2D" parent="." index="1"]
