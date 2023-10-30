@@ -28,11 +28,6 @@ func _process(delta):
 #		update_animation_direction(direction)	
 #	update_state()
 
-	
-	
-	
-	
-	
 func update_animation_direction(input: Vector2):
 	if input != Vector2.ZERO:
 		animation_tree.set("parameters/idle/blend_position", input)

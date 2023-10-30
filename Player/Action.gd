@@ -5,8 +5,7 @@ extends Node2D
 @onready var neartNode: Node
 
 func _process(delta):
-	craftAxe()
-
+	killSlime()
 func craftAxe():
 	if(!inventory.checkItemExist('rock')):
 		pick('Rocks')
@@ -64,7 +63,14 @@ func pick(groupName: String):
 #    else:
 #        return actor
 
+func killSlime():
+	var closest_smile = WorldState.get_closest_element(actor,'Slimes')
+	if closest_smile:
+		if WorldState.isNear(actor,closest_smile):
+			actor.set_idle()
+			actor.animation_tree.set("parameters/conditions/is_axe", true)
+		else:
+			actor.goTo('Slimes')
 
-	
 
 	
