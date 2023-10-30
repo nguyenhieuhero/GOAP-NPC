@@ -10,6 +10,7 @@ func _process(delta):
 #	if actor.agent.get_state('see_Rocks') and !actor.agent.get_state('has_rock'):
 #		PickUpRock.new().perform(actor,delta)
 	ChopTree.new().perform(actor,delta)
+	killSlime()
 func craftAxe():
 #	if(!inventory.checkItemExist('rock')):
 #		pick('Rocks')
@@ -68,7 +69,14 @@ func createFire():
 #    else:
 #        return actor
 
+func killSlime():
+	var closest_smile = WorldState.get_closest_element(actor,'Slimes')
+	if closest_smile:
+		if WorldState.isNear(actor,closest_smile):
+			actor.set_idle()
+			actor.animation_tree.set("parameters/conditions/is_axe", true)
+		else:
+			actor.goTo('Slimes')
 
-	
 
 	
