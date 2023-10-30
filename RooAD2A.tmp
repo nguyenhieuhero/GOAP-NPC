@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://djbnrxrcq86o"]
+[gd_scene load_steps=28 format=3 uid="uid://djbnrxrcq86o"]
 
 [ext_resource type="Script" path="res://Root.gd" id="1_62w6h"]
 [ext_resource type="PackedScene" uid="uid://bkmldnnp76f2v" path="res://Player/player.tscn" id="1_j3t0f"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cl4k460a3ct4n" path="res://Items/Scences/Twigs.tscn" id="10_i0kik"]
 [ext_resource type="PackedScene" uid="uid://cdycwjtpm47ml" path="res://Objects/Tree/Tree.tscn" id="11_ln1v0"]
 [ext_resource type="Script" path="res://TileMap.gd" id="12_2dqm8"]
-[ext_resource type="PackedScene" uid="uid://dkc4u566dq6jl" path="res://Monster/Slime/smile.tscn" id="12_x8jv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1c6t"]
 texture = ExtResource("2_dbg1o")
@@ -370,10 +369,6 @@ scenes/4/scene = ExtResource("10_i0kik")
 resource_name = "Tree"
 scenes/1/scene = ExtResource("11_ln1v0")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_c1ia1"]
-resource_name = "monster"
-scenes/1/scene = ExtResource("12_x8jv3")
-
 [sub_resource type="TileSet" id="TileSet_8thv1"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_j1c6t")
@@ -384,7 +379,6 @@ sources/4 = SubResource("TileSetAtlasSource_ohjmr")
 sources/5 = SubResource("TileSetAtlasSource_boktk")
 sources/6 = SubResource("TileSetScenesCollectionSource_fi3rn")
 sources/7 = SubResource("TileSetScenesCollectionSource_c3nnm")
-sources/9 = SubResource("TileSetScenesCollectionSource_c1ia1")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v0vs5"]
 vertices = PackedVector2Array(-35, -18, 606, -18, 608, 352, -33, 354)
@@ -471,7 +465,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = -10
-layer_2/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 917521, 6, 65536, 196614, 6, 65536, 393225, 6, 65536, 262156, 6, 65536, 458771, 6, 65536, 589839, 6, 65536, 720905, 6, 65536, 458756, 6, 65536, 524289, 6, 65536, 655376, 6, 262144, 196616, 6, 262144, 458767, 9, 65536)
+layer_2/tile_data = PackedInt32Array(196637, 6, 65536, 393241, 6, 65536, 196624, 6, 65536, 720924, 6, 65536, 1048593, 6, 65536, 917521, 6, 65536, 196614, 6, 65536, 393225, 6, 65536, 262156, 6, 65536, 458771, 6, 65536, 589839, 6, 65536, 720905, 6, 65536, 458756, 6, 65536, 524289, 6, 65536, 655376, 6, 262144, 196616, 6, 262144)
 layer_3/name = "Ground"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
