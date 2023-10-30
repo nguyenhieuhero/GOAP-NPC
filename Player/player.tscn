@@ -1535,6 +1535,7 @@ script = ExtResource("9_o2pmv")
 actor = NodePath("..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
 debug_enabled = true
 
 [node name="healthbar" type="Node2D" parent="."]

@@ -9,13 +9,14 @@ func _process(delta):
 #		PickUpTwig.new().perform(actor,delta)
 #	if actor.agent.get_state('see_Rocks') and !actor.agent.get_state('has_rock'):
 #		PickUpRock.new().perform(actor,delta)
-	ChopTree.new().perform(actor,delta)
-	killSlime()
+#	ChopTree.new().perform(actor,delta)
+#	killSlime()
+	pick('LifePots')
 func craftAxe():
-#	if(!inventory.checkItemExist('rock')):
-#		pick('Rocks')
-#	if(!inventory.checkItemExist('twig')):
-#		pick('Twigs')
+	if(!inventory.checkItemExist('rock')):
+		pick('Rocks')
+	if(!inventory.checkItemExist('twig')):
+		pick('Twigs')
 
 	if(inventory.checkItemExist('rock') && inventory.checkItemExist('twig')):
 		inventory.useItem('rock')
@@ -32,26 +33,26 @@ func createFire():
 	inventory.useItem('log')
 	GlobalTileMap.addFire(actor.position)
 				
-#func chop():
-#	if(inventory.checkItemExist('axe')):
-#		var closest_tree = WorldState.get_closest_element(actor,'Trees')
-#		if closest_tree:
-#			if WorldState.isNear(actor,closest_tree):
-#				actor.set_idle()
-#				actor.animation_tree.set("parameters/conditions/is_axe", true)
-#			else:
-#				actor.goTo('Trees')
-#	else:
-#		craftAxe();
+func chop():
+	if(inventory.checkItemExist('axe')):
+		var closest_tree = WorldState.get_closest_element(actor,'Trees')
+		if closest_tree:
+			if WorldState.isNear(actor,closest_tree):
+				actor.set_idle()
+				actor.animation_tree.set("parameters/conditions/is_axe", true)
+			else:
+				actor.goTo('Trees')
+	else:
+		craftAxe();
 #
-#func pick(groupName: String):
-#	var closest_tree = WorldState.get_closest_element(actor,groupName)
-#	if closest_tree:
-#		if WorldState.isNear(actor,closest_tree):
-#			actor.set_idle()
-#			actor.animation_tree.set("parameters/conditions/is_pick", true)
-#		else:
-#			actor.goTo(groupName)
+func pick(groupName: String):
+	var closest_tree = WorldState.get_closest_element(actor,groupName)
+	if closest_tree:
+		if WorldState.isNear(actor,closest_tree):
+			actor.set_idle()
+			actor.animation_tree.set("parameters/conditions/is_pick", true)
+		else:
+			actor.goTo(groupName)
 
 	
 #func findNearestNodeByName(objName)->Node:
