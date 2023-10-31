@@ -13,13 +13,12 @@ var currentHealth: int = maxHealth
 
 func _ready():
 	animation_tree.active = true
-	agent.init(self,[])
+	agent.init(self,[HasTwig.new(),ChopTreeGoal.new()])
 	add_child(agent)
 func _physics_process(_delta):
 	update_animation_direction(velocity)
 	move_and_slide()
 func _process(delta):
-	print(agent.state)
 	update_state()
 	pass
 #	direction = Input.get_vector("left","right","up","down")

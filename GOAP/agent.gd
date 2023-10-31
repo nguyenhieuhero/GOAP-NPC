@@ -18,9 +18,8 @@ var state: Dictionary = {}
 
 var actor: Actor
 
+
 func _process(delta):
-#	var goal = _get_best_goal()
-#	if current_goal == null or goal != current_goal:
 	state = {
 #			"position": actor.position,
 		}
@@ -28,6 +27,10 @@ func _process(delta):
 		state['has_'+s] = true
 	for s in WorldState.world_state:
 		state[s] = WorldState.world_state[s]
+	print(state)
+	for goal in goals:
+		if goal.is_valid(state):
+			print("hehe")
 
 
 func init(_actor, _goals: Array):
@@ -40,7 +43,8 @@ func get_state(state_name, default = null):
 func _get_best_goal():
 	var highest_priority
 	for goal in goals:
-		if goal.is_valid() and (highest_priority == null or goal.priority() > highest_priority.priority()):
+		print("hehe")
+		if goal.is_valid(state) and (highest_priority == null or goal.priority() > highest_priority.priority()):
 			highest_priority = goal
 
 	return highest_priority
