@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://dkc4u566dq6jl"]
+[gd_scene load_steps=30 format=3 uid="uid://dkc4u566dq6jl"]
 
+[ext_resource type="Script" path="res://Monster/Slime/slime.gd" id="1_7l66u"]
 [ext_resource type="Texture2D" uid="uid://dkpuolu6js67u" path="res://Art/NinjaAdventure/Actor/Monsters/Slime/Slime.png" id="1_acpu6"]
-[ext_resource type="Script" path="res://Monster/Slime/smile.gd" id="1_j7165"]
 [ext_resource type="PackedScene" uid="uid://wrmxl8al7ruj" path="res://Common/Scenes/Hurtbox.tscn" id="3_hoc81"]
 [ext_resource type="Script" path="res://Monster/Slime/SlimeHurtbox.gd" id="4_mnyfi"]
 [ext_resource type="Texture2D" uid="uid://r7ia0qj40wq8" path="res://Art/NinjaAdventure/FX/Smoke/Smoke/SpriteSheet.png" id="5_5ses5"]
+[ext_resource type="Script" path="res://Monster/Slime/PlayerDetecionZone.gd" id="6_rfedi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qko8u"]
 atlas = ExtResource("1_acpu6")
@@ -144,6 +145,33 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnqmj"]
 radius = 3.0
 
+[sub_resource type="Animation" id="Animation_n0fjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("deathEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("deathEffect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_hfcwl"]
 resource_name = "death"
 length = 0.6
@@ -184,33 +212,6 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_n0fjw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("deathEffect:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("deathEffect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2uw8"]
 _data = {
 "RESET": SubResource("Animation_n0fjw"),
@@ -220,8 +221,11 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_fomfq"]
 radius = 7.07107
 
-[node name="smile" type="CharacterBody2D" node_paths=PackedStringArray("endPoint") groups=["Slimes"]]
-script = ExtResource("1_j7165")
+[sub_resource type="CircleShape2D" id="CircleShape2D_umogx"]
+radius = 31.4006
+
+[node name="slime" type="CharacterBody2D" node_paths=PackedStringArray("endPoint") groups=["Slimes"]]
+script = ExtResource("1_7l66u")
 endPoint = NodePath("Marker2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -255,4 +259,11 @@ hframes = 6
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(15, 16)
 
-[connection signal="area_entered" from="SlimeHurtbox" to="." method="_on_slime_hurtbox_area_entered"]
+[node name="PlayerDetecionZone" type="Area2D" parent="."]
+script = ExtResource("6_rfedi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetecionZone"]
+shape = SubResource("CircleShape2D_umogx")
+
+[connection signal="body_entered" from="PlayerDetecionZone" to="PlayerDetecionZone" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerDetecionZone" to="PlayerDetecionZone" method="_on_body_exited"]

@@ -10,7 +10,11 @@ func _process(delta):
 #	if actor.agent.get_state('see_Rocks') and !actor.agent.get_state('has_rock'):
 #		PickUpRock.new().perform(actor,delta)
 	ChopTree.new().perform(actor,delta)
-	killSlime()
+	PickUpLog.new().perform(actor,delta)
+#	createFire()
+	if(inventory.checkItemExist('log')):
+		createFire()
+#	killSlime()
 func craftAxe():
 #	if(!inventory.checkItemExist('rock')):
 #		pick('Rocks')
@@ -30,7 +34,10 @@ func _input(event):
 			
 func createFire():
 	inventory.useItem('log')
-	GlobalTileMap.addFire(actor.position)
+	print("actor",actor.global_position)
+#	print("actor",actor.velocity)
+#	var positionFire = Vector2(actor.global_position.x, actor.global_position.y)
+	GlobalTileMap.addFire(actor.global_position)
 				
 #func chop():
 #	if(inventory.checkItemExist('axe')):

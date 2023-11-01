@@ -1,7 +1,7 @@
 extends Area2D
 class_name Hitbox
 
-@export var dame: float =10;
+@export var dame: float = 10;
 @onready var attack = AttackSource.new()
 
 

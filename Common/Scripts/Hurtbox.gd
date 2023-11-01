@@ -16,7 +16,5 @@ func _process(delta):
 func _on_area_entered(area: Hitbox):
 	currentHealth-=area.attack.dame
 	vectorDame = (self.global_position - area.attack.source).normalized()
-	print(vectorDame)
-#	print(currentHealth)
 	if(currentHealth<0):
 		get_parent().queue_free()

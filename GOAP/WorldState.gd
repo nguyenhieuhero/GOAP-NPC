@@ -5,12 +5,12 @@ var existed_group = ['Trees','LifePots','Rocks','Twigs', 'Logs']
 var world_state = {
 }
 
-func _process(delta):
-	world_state = {}
-	for group in existed_group:
-		if get_elements(group):
-			set_state('see_'+group,true)
-	
+#func _process(delta):
+#	world_state = {}
+#	for group in existed_group:
+#		if get_elements(group):
+#			set_state('see_'+group,true)
+			
 	
 func get_state(state_name, default = null):
 	return world_state.get(state_name, default)

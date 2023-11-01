@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var player = preload("res://Player/player.tscn")
 @export var speed = 20
 @export var limit = 0.5
 var startPosition 
@@ -30,3 +30,15 @@ func updateAnimation():
 		animationString = "walkDown"
 	animation.play(animationString)
 	
+func knockback(vectorDame: Vector2):
+	var knockbackDirection = vectorDame * 1000
+	velocity = knockbackDirection
+	move_and_slide()
+#
+#func see_player():
+#	var _player = player.instantiate()
+#	print("player", _player.position)
+
+
+
+
