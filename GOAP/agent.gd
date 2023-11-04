@@ -10,7 +10,7 @@ extends Node2D
 
 class_name GoapAgent
 
-var goals
+var goals: Array[GoapGoal]
 var current_goal
 var current_plan
 var current_plan_step = 0
@@ -27,13 +27,10 @@ func _process(delta):
 		state['has_'+s] = true
 	for s in WorldState.world_state:
 		state[s] = WorldState.world_state[s]
-	print(state)
-	for goal in goals:
-		if goal.is_valid(state):
-			print("hehe")
+#	print(state)
 
 
-func init(_actor, _goals: Array):
+func init(_actor, _goals: Array[GoapGoal]):
 	actor = _actor
 	goals = _goals
 
@@ -41,16 +38,13 @@ func get_state(state_name, default = null):
 	return state.get(state_name, default)
 
 func _get_best_goal():
-	var highest_priority
+	var highest_priority: GoapGoal
 	for goal in goals:
-		print("hehe")
-		if goal.is_valid(state) and (highest_priority == null or goal.priority() > highest_priority.priority()):
+		if goal.is_valid(state) and (highest_priority == null or goal.priority(state) > highest_priority.priority(state)):
 			highest_priority = goal
-
 	return highest_priority
 
 
-#
 func _follow_plan(plan, delta):
 	if plan.size() == 0:
 		return

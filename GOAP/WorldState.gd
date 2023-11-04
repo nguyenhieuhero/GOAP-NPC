@@ -1,6 +1,6 @@
 extends Node
 
-var existed_group = ['Trees','LifePots','Rocks','Twigs', 'Logs']
+var existed_group = ['Trees','LifePots','Rocks','Twigs', 'Logs', 'Slimes']
 
 var world_state = {
 }

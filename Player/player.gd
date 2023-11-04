@@ -9,18 +9,41 @@ var currentHealth: int = maxHealth
 @onready var isAction = false
 @onready var nav: NavigationAgent2D = $"./NavigationAgent2D"
 @onready var agent = GoapAgent.new()
+@onready var planner= TestGoapActionPlanner.new()
 @onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	animation_tree.active = true
-	agent.init(self,[HasTwig.new(),ChopTreeGoal.new()])
+	agent.init(self,[
+		HasTwig.new(),
+		ChopTreeGoal.new(),
+		HasRock.new()
+		])
 	add_child(agent)
+	planner.set_actions([
+		PickUpLifepot.new(),
+		PickUpLog.new(),
+		PickUpTwig.new(),
+		PickUpRock.new(),
+		CreateAxe.new(),
+		ChopTree.new(),
+		KillSlime.new()
+	])
 func _physics_process(_delta):
 	update_animation_direction(velocity)
 	move_and_slide()
 func _process(delta):
+	var root = PlannerStep.new()
+	var _t1 = planner.get_plan(ChopTreeGoal.new(),agent.state)
+#	var _t2 = []
+#	for action in _t1:
+#		_t2.push_back(action.get_action())
+#	print(_t2)
+#	for action in _t1:
+#		action.perform(self,delta)
+#	if _t1.size() == 0:
+#		velocity = Vector2.ZERO
 	update_state()
-	pass
 #	direction = Input.get_vector("left","right","up","down")
 #	if isAction:
 #		return

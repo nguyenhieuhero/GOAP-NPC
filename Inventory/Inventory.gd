@@ -26,4 +26,14 @@ func getExistedItems():
 		items[slot.itemResource.name]=true
 	return items
 
+func useItem(itemName):
+	for slot in inventory.slots:
+		if(slot.itemResource && slot.itemResource.name == itemName):
+			if(slot.quanity > 0):    
+				slot.quanity -=1;
+			if(slot.quanity == 0): 
+				slot.itemResource = null;
+	update_slots()
 
+func insert(item: ItemResource):
+	inventory.insert(item)

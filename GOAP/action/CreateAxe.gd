@@ -1,5 +1,9 @@
 extends GoapAction
 class_name CreateAxe
+@onready var axeRes = preload("res://Items/ItemResources/axe.tres")
+
+func get_action():
+	return "CreateAxeAction"
 
 func get_cost(state: Dictionary):
 	return 1
@@ -7,7 +11,8 @@ func get_cost(state: Dictionary):
 func get_preconditions() -> Dictionary:
 	return {
 		"has_rock": true,
-		"has_twig":true
+		"has_twig":true,
+		"has_axe": false
 	}
 
 func get_effects() -> Dictionary:
@@ -16,10 +21,8 @@ func get_effects() -> Dictionary:
 	}
 
 func perform(actor: Actor, delta):
-	var closest_tree = WorldState.get_closest_element(actor,'Trees')
-	if closest_tree:
-		if WorldState.isNear(actor,closest_tree):
-			actor.set_idle()
-			actor.animation_tree.set("parameters/conditions/is_axe", true)
-		else:
-			actor.goTo('Trees')
+	actor.set_idle()
+	actor.inventory.useItem('rock')
+	actor.inventory.useItem('twig')
+	actor.animationPlayer.play('craft_axe');
+	actor.inventory.insert(load("res://Items/ItemResources/axe.tres"))

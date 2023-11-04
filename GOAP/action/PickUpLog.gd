@@ -1,6 +1,9 @@
 extends GoapAction
 class_name PickUpLog
 
+func get_action():
+	return "PickUpLogAction"
+
 func get_cost(state: Dictionary):
 	if state.has("position"):
 		var closest_tree = WorldState.get_closest_element("Logs", state)
@@ -9,7 +12,8 @@ func get_cost(state: Dictionary):
 
 func get_preconditions() -> Dictionary:
 	return {
-		"see_Logs": true
+		"see_Logs": true,
+		"has_log": false
 	}
 
 func get_effects() -> Dictionary:
