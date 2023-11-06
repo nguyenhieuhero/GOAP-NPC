@@ -1,18 +1,19 @@
 extends Node
 
-var existed_group = ['Trees','LifePots','Rocks','Twigs', 'Logs']
+var existed_group = ['Trees','LifePots','Rocks','Twigs', 'Logs', 'Slimes']
 
 var world_state = {
 }
 
 func _process(delta):
-	world_state = {}
 	for group in existed_group:
 		if get_elements(group):
 			set_state('see_'+group,true)
+		else:
+			set_state('see_'+group,false)
 	
 	
-func get_state(state_name, default = null):
+func get_state(state_name, default = false):
 	return world_state.get(state_name, default)
 
 

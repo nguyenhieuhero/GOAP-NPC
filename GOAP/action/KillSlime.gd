@@ -1,28 +1,29 @@
 extends GoapAction
-class_name ChopTree
+class_name KillSlime
 
 func get_action():
-	return "ChopTreeAction"
+	return "KillSlimeAction"
 
 func get_cost(state: Dictionary):
-	return 10
+	return 1
 
 func get_preconditions() -> Dictionary:
 	return {
-		"see_Trees": true,
-		"has_axe": true
+		"has_axe": true,
+		"has_lifepot": true,
+		"see_Slimes": true,
 	}
 
 func get_effects() -> Dictionary:
 	return {
-		"has_log": true
+		"see_Slimes": false
 	}
 
 func perform(actor: Actor, delta):
-	var closest_tree = WorldState.get_closest_element(actor,'Trees')
-	if closest_tree:
-		if WorldState.isNear(actor,closest_tree):
+	var closest_smile = WorldState.get_closest_element(actor,'Slimes')
+	if closest_smile:
+		if WorldState.isNear(actor,closest_smile):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_axe", true)
 		else:
-			actor.goTo('Trees')
+			actor.goTo('Slimes')

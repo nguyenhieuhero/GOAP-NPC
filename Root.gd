@@ -7,10 +7,12 @@ var length_of_night = 10
 var countDay = 1
 var healthdecrease = 30
 func _ready():
-	if state == "day": 
+	if state == "day":
+		WorldState.set_state('is_day',true)
 		$".".modulate = Color(1,1,1,1);
 		print("Ngay", countDay)
-	elif state == "night": 
+	elif state == "night":
+		WorldState.set_state('is_day',false)
 		$".".modulate = Color(172,172,172,120);
 func _on_timer_timeout():
 	if state == "day": 
@@ -21,12 +23,14 @@ func _on_timer_timeout():
 func _process(delta):
 	if change_state == true: 
 		change_state = false
-		if state == "day": 
+		if state == "day":
+			WorldState.set_state('is_day',true)
 			countDay += 1
 			print("Ngay", countDay)
 			decreaseHealth()	
 			change_to_day()
 		elif state == "night":
+			WorldState.set_state('is_day',false)
 			change_to_night()				
 func change_to_day():
 	$AnimationPlayer.play("nighttoday")

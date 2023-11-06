@@ -5,12 +5,13 @@ extends Node2D
 @onready var neartNode: Node
 
 func _process(delta):
-#	if !actor.agent.get_state('see_Twigs') and !actor.agent.get_state('has_twig'):
+#	if actor.agent.get_state('see_Twigs'):
 #		PickUpTwig.new().perform(actor,delta)
 #	if actor.agent.get_state('see_Rocks') and !actor.agent.get_state('has_rock'):
 #		PickUpRock.new().perform(actor,delta)
-	ChopTree.new().perform(actor,delta)
-	killSlime()
+#	ChopTree.new().perform(actor,delta)
+#	killSlime()
+	pass
 func craftAxe():
 #	if(!inventory.checkItemExist('rock')):
 #		pick('Rocks')
@@ -25,12 +26,12 @@ func craftAxe():
 		inventory.insert(axeRes)
 
 func _input(event):	
-	if(Input.is_action_pressed("toggle_inventory")):
-			actor.inventory.toggle()
+	if(Input.is_action_just_pressed("toggle_inventory")):
+		actor.inventory.toggle()
 			
 func createFire():
 	inventory.useItem('log')
-	GlobalTileMap.addFire(actor.position)
+	GlobalTileMap.addFire(actor.position+actor.velocity.normalized())
 				
 #func chop():
 #	if(inventory.checkItemExist('axe')):

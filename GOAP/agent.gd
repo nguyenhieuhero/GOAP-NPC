@@ -10,7 +10,7 @@ extends Node2D
 
 class_name GoapAgent
 
-var goals
+var goals: Array[GoapGoal]
 var current_goal
 var current_plan
 var current_plan_step = 0
@@ -18,19 +18,20 @@ var state: Dictionary = {}
 
 var actor: Actor
 
+
 func _process(delta):
-#	var goal = _get_best_goal()
-#	if current_goal == null or goal != current_goal:
 	state = {
-#			"position": actor.position,
+#			"position": actor,
+			
 		}
 	for s in actor.inventory.getExistedItems():
 		state['has_'+s] = true
 	for s in WorldState.world_state:
 		state[s] = WorldState.world_state[s]
+#	print(state)
 
 
-func init(_actor, _goals: Array):
+func init(_actor, _goals: Array[GoapGoal]):
 	actor = _actor
 	goals = _goals
 
@@ -38,19 +39,24 @@ func get_state(state_name, default = null):
 	return state.get(state_name, default)
 
 func _get_best_goal():
-	var highest_priority
+	var highest_priority: GoapGoal
 	for goal in goals:
-		if goal.is_valid() and (highest_priority == null or goal.priority() > highest_priority.priority()):
+		if goal.is_valid(state) and (highest_priority == null or goal.priority(state) > highest_priority.priority(state)):
 			highest_priority = goal
-
 	return highest_priority
 
 
-#
 func _follow_plan(plan, delta):
-	if plan.size() == 0:
+#	print(current_plan_step,plan.size())
+	if plan.size()==0:
+		actor.velocity = Vector2.ZERO
 		return
+	plan[0].perform(actor,delta)
+#	if current_plan_step >= plan.size():
+#		actor.velocity = Vector2.ZERO
+#		return
+#
+#	var is_step_complete = plan[current_plan_step].perform(actor, delta)
+#	if is_step_complete and current_plan_step < plan.size() - 1:
+#		current_plan_step += 1
 
-	var is_step_complete = plan[current_plan_step].perform(actor, delta)
-	if is_step_complete and current_plan_step < plan.size() - 1:
-		current_plan_step += 1

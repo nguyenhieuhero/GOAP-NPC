@@ -1,6 +1,9 @@
 extends GoapAction
 class_name PickUpTwig
 
+func get_action():
+	return "PickUpTwigAction"
+
 func is_valid():
 	return WorldState.get_elements('Twigs').size() > 0
 
@@ -12,7 +15,8 @@ func get_cost(state: Dictionary):
 
 func get_preconditions() -> Dictionary:
 	return {
-		"see_Twigs": true
+		"see_Twigs": true,
+		"has_twig": false
 	}
 
 func get_effects() -> Dictionary:
@@ -26,5 +30,6 @@ func perform(actor: Actor,delta):
 		if WorldState.isNear(actor,closest_tree):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_pick", true)
+			return true
 		else:
 			actor.goTo('Twigs')

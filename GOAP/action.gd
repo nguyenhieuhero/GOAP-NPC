@@ -1,6 +1,9 @@
 extends Node
 class_name GoapAction
 
+func get_action() -> String:
+	return ""
+
 func get_cost(state) -> int:
 	return 1000
 

@@ -1,15 +1,19 @@
 extends GoapAction
 class_name PickUpLifepot
 
+func get_action():
+	return "PickUpLifepotAction"
+
 func get_cost(state: Dictionary):
 	if state.has("position"):
-		var closest_tree = WorldState.get_closest_element("LifePots", state)
+		var closest_tree = WorldState.get_closest_element(state["position"],"LifePots")
 		return int(closest_tree.position.distance_to(state.position) / 5)
 	return 5
 
 func get_preconditions() -> Dictionary:
 	return {
-		"see_LifePots": true
+		"see_LifePots": true,
+		"has_lifepot": false
 	}
 
 func get_effects() -> Dictionary:
