@@ -30,5 +30,6 @@ func perform(actor: Actor,delta):
 		if WorldState.isNear(actor,closest_tree):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_pick", true)
+			return true
 		else:
 			actor.goTo('Twigs')

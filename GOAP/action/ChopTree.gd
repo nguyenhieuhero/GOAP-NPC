@@ -5,7 +5,7 @@ func get_action():
 	return "ChopTreeAction"
 
 func get_cost(state: Dictionary):
-	return 1
+	return 10
 
 func get_preconditions() -> Dictionary:
 	return {

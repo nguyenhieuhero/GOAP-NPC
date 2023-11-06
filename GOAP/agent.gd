@@ -21,7 +21,8 @@ var actor: Actor
 
 func _process(delta):
 	state = {
-#			"position": actor.position,
+#			"position": actor,
+			
 		}
 	for s in actor.inventory.getExistedItems():
 		state['has_'+s] = true
@@ -46,9 +47,16 @@ func _get_best_goal():
 
 
 func _follow_plan(plan, delta):
-	if plan.size() == 0:
+#	print(current_plan_step,plan.size())
+	if plan.size()==0:
+		actor.velocity = Vector2.ZERO
 		return
+	plan[0].perform(actor,delta)
+#	if current_plan_step >= plan.size():
+#		actor.velocity = Vector2.ZERO
+#		return
+#
+#	var is_step_complete = plan[current_plan_step].perform(actor, delta)
+#	if is_step_complete and current_plan_step < plan.size() - 1:
+#		current_plan_step += 1
 
-	var is_step_complete = plan[current_plan_step].perform(actor, delta)
-	if is_step_complete and current_plan_step < plan.size() - 1:
-		current_plan_step += 1

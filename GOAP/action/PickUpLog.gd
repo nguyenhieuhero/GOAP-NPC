@@ -6,7 +6,7 @@ func get_action():
 
 func get_cost(state: Dictionary):
 	if state.has("position"):
-		var closest_tree = WorldState.get_closest_element("Logs", state)
+		var closest_tree = WorldState.get_closest_element(state["position"],"Logs")
 		return int(closest_tree.position.distance_to(state.position) / 5)
 	return 5
 
@@ -27,5 +27,6 @@ func perform(actor: Actor,delta):
 		if WorldState.isNear(actor,closest_tree):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_pick", true)
+			return true
 		else:
 			actor.goTo('Logs')

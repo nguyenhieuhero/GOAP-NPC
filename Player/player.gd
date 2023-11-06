@@ -17,7 +17,7 @@ func _ready():
 	agent.init(self,[
 		HasTwig.new(),
 		ChopTreeGoal.new(),
-		HasRock.new()
+		HasRock.new(),
 		])
 	add_child(agent)
 	planner.set_actions([
@@ -34,22 +34,10 @@ func _physics_process(_delta):
 	move_and_slide()
 func _process(delta):
 	var root = PlannerStep.new()
-	var _t1 = planner.get_plan(ChopTreeGoal.new(),agent.state)
-#	var _t2 = []
-#	for action in _t1:
-#		_t2.push_back(action.get_action())
-#	print(_t2)
-#	for action in _t1:
-#		action.perform(self,delta)
-#	if _t1.size() == 0:
-#		velocity = Vector2.ZERO
+	var _t1 = planner.get_plan(KILLSLIME.new(),agent.state)
+	agent._follow_plan(_t1,delta)
+	print("======")
 	update_state()
-#	direction = Input.get_vector("left","right","up","down")
-#	if isAction:
-#		return
-#	if direction != Vector2.ZERO:
-#		update_animation_direction(direction)	
-#	update_state()
 
 func update_animation_direction(input: Vector2):
 	if input != Vector2.ZERO:

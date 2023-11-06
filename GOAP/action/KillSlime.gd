@@ -12,7 +12,6 @@ func get_preconditions() -> Dictionary:
 		"has_axe": true,
 		"has_lifepot": true,
 		"see_Slimes": true,
-		"is_day": true
 	}
 
 func get_effects() -> Dictionary:

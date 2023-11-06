@@ -6,7 +6,7 @@ func get_action():
 
 func get_cost(state: Dictionary):
 	if state.has("position"):
-		var closest_tree = WorldState.get_closest_element("LifePots", state)
+		var closest_tree = WorldState.get_closest_element(state["position"],"LifePots")
 		return int(closest_tree.position.distance_to(state.position) / 5)
 	return 5
 
