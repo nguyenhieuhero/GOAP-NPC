@@ -27,14 +27,16 @@ func _ready():
 		PickUpRock.new(),
 		CreateAxe.new(),
 		ChopTree.new(),
-		KillSlime.new()
+		KillSlime.new(),
+		CreateFire.new()
 	])
 func _physics_process(_delta):
 	update_animation_direction(velocity)
 	move_and_slide()
 func _process(delta):
 	var root = PlannerStep.new()
-	var _t1 = planner.get_plan(KILLSLIME.new(),agent.state)
+	var _t1 = planner.get_plan(HasFireGoal.new(),agent.state)
+	print(agent.state)
 	agent._follow_plan(_t1,delta)
 	print("======")
 	update_state()
