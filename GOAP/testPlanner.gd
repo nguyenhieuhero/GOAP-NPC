@@ -3,7 +3,7 @@ extends Node
 class_name TestGoapActionPlanner
 
 var actions: Array[GoapAction]
-var max_depth = 6
+var max_depth = 10
 
 func set_actions(_actions: Array[GoapAction]):
 	actions = _actions
