@@ -2,7 +2,12 @@ extends CharacterBody2D
 class_name Actor
 @export var maxHealth: int = 100
 var currentHealth: int = maxHealth
+@export var maxSanity: int = 30 
+var currentSanity: int = maxSanity
+@export var maxHunger: int = 100 
+var currentHunger: int = maxHunger - 10
 @export var SPEED: float = 50
+
 @export var direction: Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
 @onready var inventory = $Inventory
@@ -16,19 +21,25 @@ func _ready():
 	animation_tree.active = true
 	agent.init(self,[
 		HasTwig.new(),
-		ChopTreeGoal.new(),
-		HasRock.new(),
+#		ChopTreeGoal.new(),
+#		HasRock.new(),
+#		SanityEnsure.new(),
+#		HungerEnsure.new(),
 		])
 	add_child(agent)
 	planner.set_actions([
-		PickUpLifepot.new(),
+#		PickUpLifepot.new(),
 		PickUpLog.new(),
 		PickUpTwig.new(),
 		PickUpRock.new(),
+		PickUpBeaf.new(),
 		CreateAxe.new(),
 		ChopTree.new(),
-		KillSlime.new(),
-		CreateFire.new()
+#		KillSlime.new(),
+#		CreateFire.new(),
+#		HealingSanity.new(),
+		KillChicken.new(),
+		HealingHunger.new(),		
 	])
 func _physics_process(_delta):
 	update_animation_direction(velocity)
@@ -40,7 +51,6 @@ func _process(delta):
 	agent._follow_plan(_t1,delta)
 	print("======")
 	update_state()
-
 func update_animation_direction(input: Vector2):
 	if input != Vector2.ZERO:
 		animation_tree.set("parameters/idle/blend_position", input)
@@ -72,7 +82,6 @@ func goTo(objName):
 		var dir = to_local(nav.get_next_path_position()).normalized()
 		velocity = dir * SPEED
 	
-
 
 
 

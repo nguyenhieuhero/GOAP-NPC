@@ -22,8 +22,9 @@ var actor: Actor
 func _process(delta):
 	state = {
 #			"position": actor,
-			"is_healthy":actor.currentHealth>80
-			
+			"is_healthy":actor.currentHealth>80,
+			"is_sanity": actor.currentSanity>15,
+			"is_hunger": actor.currentHunger>80
 		}
 	for s in actor.inventory.getExistedItems():
 		state['has_'+s] = true

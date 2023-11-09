@@ -3,7 +3,7 @@ extends Node
 class_name TestGoapActionPlanner
 
 var actions: Array[GoapAction]
-var max_depth = 10
+var max_depth = 7
 
 func set_actions(_actions: Array[GoapAction]):
 	actions = _actions
@@ -58,16 +58,17 @@ func get_plan(goal: GoapGoal, state: Dictionary):
 	root = update_path(create_plans(root,state))
 #	print_action_tree(root)
 	var cheapeast_plan = get_cheapeast_plan(tree_to_array(root))
-	print(goal.get_goal())
-	for plan in cheapeast_plan:
-		print(plan.get_action())
+#	print(goal.get_goal())
+#	for plan in cheapeast_plan:
+#		print(plan.get_action())
 	return cheapeast_plan
-
+	
 func tree_to_array(root: PlannerStep):
 	var plans: Array = []
 	if root.is_end:
 		plans.push_back({"actions_name":[root.action.get_action()],"cost":root.action.get_cost(root.new_state),"actions":[root.action], "depth":[root.depth]})
 		return plans
+	
 	for r in root.children:
 		if r.action and r.should_go:
 			for child_plan in tree_to_array(r):
@@ -78,7 +79,7 @@ func tree_to_array(root: PlannerStep):
 					child_plan.cost += r.action.get_cost(r.new_state)
 				plans.push_back(child_plan)
 	return plans
-
+	
 
 
 func get_cheapeast_plan(plans: Array):
