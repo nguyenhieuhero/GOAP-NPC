@@ -485,7 +485,6 @@ layer_3/tile_data = PackedInt32Array(458765, 7, 65536, 393235, 7, 65536)
 script = ExtResource("12_2dqm8")
 
 [node name="Player" parent="." instance=ExtResource("1_j3t0f")]
-visible = true
 z_index = 0
 position = Vector2(121, 99)
 

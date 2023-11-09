@@ -6,7 +6,7 @@ func get_goal():
 	return "ChopTreeGoal"
 
 func is_valid(state):
-	return state.get('has_axe',false)
+	return state.get('see_Trees',false)
 	
 func priority(state: Dictionary) -> int:
 	return 1

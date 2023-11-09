@@ -26,4 +26,4 @@ func get_effects() -> Dictionary:
 func perform(actor: Actor,delta):
 	actor.inventory.useItem('log')
 	GlobalTileMap.addFire(actor.position+actor.velocity.normalized())
-	return
+	return true

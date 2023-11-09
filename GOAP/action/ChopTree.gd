@@ -15,10 +15,12 @@ func get_preconditions() -> Dictionary:
 
 func get_effects() -> Dictionary:
 	return {
-		"has_log": true
+		"see_Logs": true
 	}
 
 func perform(actor: Actor, delta):
+	if actor.agent.get_state('see_Logs',false):
+		return true
 	var closest_tree = WorldState.get_closest_element(actor,'Trees')
 	if closest_tree:
 		if WorldState.isNear(actor,closest_tree):

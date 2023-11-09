@@ -24,6 +24,6 @@ func perform(actor: Actor, delta):
 	actor.set_idle()
 	actor.inventory.useItem('rock')
 	actor.inventory.useItem('twig')
-	actor.animationPlayer.play('craft_axe');
+	actor.animationPlayer.play('craft_axe')
 	actor.inventory.insert(load("res://Items/ItemResources/axe.tres"))
 	return true

@@ -40,18 +40,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2(0, -4)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PickableArea/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_0jqs1"]
 resource_name = "axe_down"
@@ -689,7 +677,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_u3ncm"]
 resource_name = "pick_right"
 length = 0.4
-loop_mode = 1
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1150,7 +1137,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8njta"]
-states/Start/position = Vector2(138, 93)
+states/Start/position = Vector2(139, 93)
 states/axe/node = SubResource("AnimationNodeBlendSpace2D_5oq3v")
 states/axe/position = Vector2(314, 219)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_gt2ib")
@@ -1494,6 +1481,7 @@ radius = 7.0
 size = Vector2(13.6115, 7.70647)
 
 [node name="Player" type="CharacterBody2D"]
+visible = false
 z_index = 1
 y_sort_enabled = true
 position = Vector2(103, 25)
@@ -1507,7 +1495,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_8njta")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/conditions/is_axe = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_pick = false
@@ -1519,7 +1506,7 @@ parameters/walk/blend_position = Vector2(-0.0288, -0.161677)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kckkd")
-animation = &"idle_down"
+animation = &"craft_axe"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
