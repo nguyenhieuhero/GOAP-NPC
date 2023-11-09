@@ -22,11 +22,12 @@ func get_effects() -> Dictionary:
 	}
 
 func perform(actor: Actor,delta):
+	if actor.agent.get_state('has_log'):
+		return true
 	var closest_tree = WorldState.get_closest_element(actor,'Logs')
 	if closest_tree:
 		if WorldState.isNear(actor,closest_tree):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_pick", true)
-			return true
 		else:
 			actor.goTo('Logs')

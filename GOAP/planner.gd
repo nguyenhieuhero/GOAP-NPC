@@ -1,11 +1,12 @@
 extends Node
 
-class_name TestGoapActionPlanner
+class_name GoapPlanner
 
-var actions: Array[GoapAction]
+static var actions: Array[GoapAction]
 var max_depth = 7
 
-func set_actions(_actions: Array[GoapAction]):
+static func set_actions(_actions: Array[GoapAction]):
+	print("Set action successs!")
 	actions = _actions
 
 func discovered_actions(state: Dictionary) -> Array[GoapAction]:
@@ -57,6 +58,7 @@ func get_plan(goal: GoapGoal, state: Dictionary):
 #	state = {"has_rock":true, "is_day": true, "see_Trees": true, "see_LifePots": true, "see_Rocks": true, "see_Twigs": true, "see_Logs": false, "see_Slimes": true }
 	root = update_path(create_plans(root,state))
 #	print_action_tree(root)
+#	print(tree_to_array(root))
 	var cheapeast_plan = get_cheapeast_plan(tree_to_array(root))
 #	print(goal.get_goal())
 #	for plan in cheapeast_plan:
@@ -100,7 +102,7 @@ func update_path(root: PlannerStep) -> PlannerStep:
 	return root
 
 func print_action_tree(root: PlannerStep):
-	if root.action and root.should_go:
+	if root.action:
 		print(root.action.get_action()," ",root.depth," ",root.should_go," ",root.is_end)
 	for r in root.children:
 		print_action_tree(r)

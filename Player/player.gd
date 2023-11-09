@@ -14,20 +14,18 @@ var currentHunger: int = maxHunger - 10
 @onready var isAction = false
 @onready var nav: NavigationAgent2D = $"./NavigationAgent2D"
 @onready var agent = GoapAgent.new()
-@onready var planner= TestGoapActionPlanner.new()
+@onready var planner= GoapPlanner.new()
 @onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	animation_tree.active = true
 	agent.init(self,[
-		HasTwig.new(),
+#		HasTwig.new(),
 #		ChopTreeGoal.new(),
 #		HasRock.new(),
 #		SanityEnsure.new(),
-#		HungerEnsure.new(),
-		])
-	add_child(agent)
-	planner.set_actions([
+		HungerEnsure.new(),
+		],[
 #		PickUpLifepot.new(),
 		PickUpLog.new(),
 		PickUpTwig.new(),
@@ -41,15 +39,11 @@ func _ready():
 		KillChicken.new(),
 		HealingHunger.new(),		
 	])
+	add_child(agent)
 func _physics_process(_delta):
 	update_animation_direction(velocity)
 	move_and_slide()
 func _process(delta):
-	var root = PlannerStep.new()
-	var _t1 = planner.get_plan(HasFireGoal.new(),agent.state)
-	print(agent.state)
-	agent._follow_plan(_t1,delta)
-	print("======")
 	update_state()
 func update_animation_direction(input: Vector2):
 	if input != Vector2.ZERO:

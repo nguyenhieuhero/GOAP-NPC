@@ -6,9 +6,11 @@ func get_goal():
 	return "HasFireGoal"
 
 func is_valid(state):
-	return state.get('has_axe',false)
+	return state.get('see_Fires') == false
 	
 func priority(state: Dictionary) -> int:
+	if !state.get("is_day",false):
+		return 10
 	return 1
 
 func get_desired_state() -> Dictionary:
