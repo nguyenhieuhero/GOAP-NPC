@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://dkc4u566dq6jl"]
+[gd_scene load_steps=30 format=3 uid="uid://dkc4u566dq6jl"]
 
 [ext_resource type="Texture2D" uid="uid://dkpuolu6js67u" path="res://Art/NinjaAdventure/Actor/Monsters/Slime/Slime.png" id="1_acpu6"]
 [ext_resource type="Script" path="res://Monster/Slime/smile.gd" id="1_j7165"]
 [ext_resource type="PackedScene" uid="uid://wrmxl8al7ruj" path="res://Common/Scenes/Hurtbox.tscn" id="3_hoc81"]
 [ext_resource type="Script" path="res://Monster/Slime/SlimeHurtbox.gd" id="4_mnyfi"]
 [ext_resource type="Texture2D" uid="uid://r7ia0qj40wq8" path="res://Art/NinjaAdventure/FX/Smoke/Smoke/SpriteSheet.png" id="5_5ses5"]
+[ext_resource type="Script" path="res://Monster/Slime/PlayerDetectionZone.gd" id="6_n154b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qko8u"]
 atlas = ExtResource("1_acpu6")
@@ -220,6 +221,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_fomfq"]
 radius = 7.07107
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_axusk"]
+radius = 43.566
+
 [node name="smile" type="CharacterBody2D" node_paths=PackedStringArray("endPoint") groups=["Slimes"]]
 script = ExtResource("1_j7165")
 endPoint = NodePath("Marker2D")
@@ -227,8 +231,7 @@ endPoint = NodePath("Marker2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_j8beg")
-animation = &"walkDown"
-frame_progress = 0.582286
+animation = &"walkUp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -255,4 +258,10 @@ hframes = 6
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(15, 16)
 
-[connection signal="area_entered" from="SlimeHurtbox" to="." method="_on_slime_hurtbox_area_entered"]
+[node name="PlayerDetectionZone" type="Area2D" parent="."]
+script = ExtResource("6_n154b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
+shape = SubResource("CircleShape2D_axusk")
+
+[connection signal="body_entered" from="PlayerDetectionZone" to="PlayerDetectionZone" method="_on_body_entered"]

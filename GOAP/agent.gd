@@ -22,6 +22,7 @@ var actor: Actor
 
 func _process(delta):
 	update_agent_state()
+	print(state)
 	var goal = _get_best_goal()
 	if current_goal == null or goal != current_goal:
 		if goal:
@@ -41,13 +42,16 @@ func _process(delta):
 		_follow_plan(current_plan,delta)
 func update_agent_state():
 	state = {
-#		"position": actor,
-		"is_healthy":actor.currentHealth>80
-	}
+#			"position": actor,
+			"is_healthy":actor.currentHealth>80,
+			"is_sanity": actor.currentSanity>15,
+			"is_hunger": actor.currentHunger>80
+		}
 	for s in actor.inventory.getExistedItems():
 		state['has_'+s] = true
 	for s in WorldState.world_state:
 		state[s] = WorldState.world_state[s]
+	state["is_hunger"] = false
 func init(_actor, _goals: Array[GoapGoal],_actions:Array[GoapAction]):
 	actor = _actor
 	goals = _goals

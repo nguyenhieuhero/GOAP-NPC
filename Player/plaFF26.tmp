@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bkmldnnp76f2v"]
+[gd_scene load_steps=104 format=3 uid="uid://bkmldnnp76f2v"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_wmt3j"]
 [ext_resource type="Texture2D" uid="uid://xin6rec66v64" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Actions.png" id="2_6dxic"]
@@ -15,8 +15,6 @@
 [ext_resource type="Script" path="res://Player/healthbar.gd" id="13_8cf2o"]
 [ext_resource type="Texture2D" uid="uid://cw8rxx4iuufme" path="res://Art/sanitybar (2).png" id="14_x58hs"]
 [ext_resource type="Script" path="res://Player/SanityProgressBar.gd" id="15_2qbch"]
-[ext_resource type="Texture2D" uid="uid://cbydonoktkhom" path="res://Art/hungerProcess.png" id="16_23jji"]
-[ext_resource type="Script" path="res://Player/HungerBar.gd" id="17_8etcg"]
 
 [sub_resource type="Animation" id="Animation_4pk7g"]
 length = 0.001
@@ -1489,6 +1487,10 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(103, 25)
 script = ExtResource("1_wmt3j")
+maxHealth = null
+maxSanity = null
+SPEED = null
+direction = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1581,17 +1583,5 @@ max_value = 30.0
 texture_under = ExtResource("11_qwwc3")
 texture_progress = ExtResource("14_x58hs")
 script = ExtResource("15_2qbch")
-
-[node name="hungerbar" type="Node2D" parent="."]
-scale = Vector2(0.4, 0.4)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="hungerbar"]
-offset_left = -30.0
-offset_top = -77.5
-offset_right = 34.0
-offset_bottom = -67.5
-texture_under = ExtResource("11_qwwc3")
-texture_progress = ExtResource("16_23jji")
-script = ExtResource("17_8etcg")
 
 [connection signal="area_entered" from="PickableArea" to="PickableArea" method="_on_area_entered"]

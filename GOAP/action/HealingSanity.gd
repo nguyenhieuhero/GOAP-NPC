@@ -1,31 +1,28 @@
 extends GoapAction
-class_name KillSlime
+class_name HealingSanity
 
 func get_action():
-	return "KillSlimeAction"
+	return "HealingSanityAction"
 
 func get_cost(state: Dictionary):
 	return 1
 
 func get_preconditions() -> Dictionary:
 	return {
-		"has_axe": true,
-		"has_lifepot": true,
-		"see_Slimes": true,
+		"see_fire": true,
 	}
 
 func get_effects() -> Dictionary:
 	return {
-		"see_Slimes": false
+		"is_sanity": true
 	}
 
 func perform(actor: Actor, delta):
-	var closest_smile = WorldState.get_closest_element(actor,'Slimes')
+	var closest_smile = WorldState.get_closest_element(actor,'Fires')
 	if closest_smile:
 		if WorldState.isNear(actor,closest_smile):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_axe", true)
-			actor.currentHealth -= 10
 		else:
-			actor.goTo('Slimes')
-	
+			actor.goTo('Fires')
+			
