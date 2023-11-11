@@ -12,8 +12,8 @@ func get_cost(state: Dictionary):
 
 func get_preconditions() -> Dictionary:
 	return {
+	
 		"see_Beafs": true,
-		"has_beaf":false
 	}
 
 func get_effects() -> Dictionary:

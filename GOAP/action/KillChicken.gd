@@ -19,6 +19,8 @@ func get_effects() -> Dictionary:
 	}
 
 func perform(actor: Actor, delta):
+	if actor.agent.get_state('see_Beafs'):
+		return true
 	var closest_smile = WorldState.get_closest_element(actor,'Chickens')
 	if closest_smile:
 		if WorldState.isNear(actor,closest_smile):
@@ -26,3 +28,4 @@ func perform(actor: Actor, delta):
 			actor.animation_tree.set("parameters/conditions/is_axe", true)
 		else:
 			actor.goTo('Chickens')
+ 

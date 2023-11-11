@@ -8,9 +8,9 @@ func is_valid(state):
 	return true
 	
 func priority(state: Dictionary) -> int:
-	return 20
+	return 100
 
 func get_desired_state() -> Dictionary:
 	return {
-		"has_beaf": true
+		"is_hunger": true
 	}

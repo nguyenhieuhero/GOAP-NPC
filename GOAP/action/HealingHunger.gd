@@ -18,7 +18,9 @@ func get_effects() -> Dictionary:
 	}
 
 func perform(actor: Actor, delta):
+	if actor.agent.get_state('is_hunger'):
+		return true
 	actor.set_idle()
-	await actor.animationPlayer.play('craft_axe');
+	actor.animationPlayer.play('craft_axe');
 	actor.inventory.useItem('beaf')
 	actor.currentHunger += 10

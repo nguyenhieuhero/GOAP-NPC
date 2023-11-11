@@ -5,7 +5,7 @@ var currentHealth: int = maxHealth
 @export var maxSanity: int = 30 
 var currentSanity: int = maxSanity
 @export var maxHunger: int = 100 
-var currentHunger: int = maxHunger - 10
+@onready var currentHunger: int = maxHunger
 @export var SPEED: float = 50
 
 @export var direction: Vector2 = Vector2(0, 1)
@@ -26,7 +26,7 @@ func _ready():
 #		SanityEnsure.new(),
 		HungerEnsure.new(),
 		],[
-#		PickUpLifepot.new(),
+		PickUpLifepot.new(),
 		PickUpLog.new(),
 		PickUpTwig.new(),
 		PickUpRock.new(),

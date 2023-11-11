@@ -5,7 +5,7 @@ var change_state = false
 var length_of_day = 10
 var length_of_night = 10
 var countDay = 1
-var healthdecrease = 30
+var hungerdecrease = 30
 func _ready():
 	if state == "day":
 		$DayNight/countDay.text = "Day" + " " +str(countDay)
@@ -32,7 +32,7 @@ func _process(delta):
 			$DayNight/countDay.text = "Day" + " " + str(countDay)
 			$DayNight/DayNight.text = "Ngày"
 			print("Ngay", countDay)
-			decreaseHealth()	
+			decreaseHunger()	
 			change_to_day()
 		elif state == "night":
 			$DayNight/DayNight.text = "Tối"
@@ -48,9 +48,9 @@ func change_to_night():
 	$Timer.wait_time = length_of_night
 	$Timer.start()	
 	$Timer["autostart"] = true
-func decreaseHealth():
-	$Player.currentHealth -= healthdecrease
-	if $Player.currentHealth < 0: 
+func decreaseHunger():
+	$Player.currentHunger -= hungerdecrease
+	if $Player.currentHunger < 0: 
 		print('game over')
-	print($Player.currentHealth)
+	print($Player.currentHunger)
 
