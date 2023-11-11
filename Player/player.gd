@@ -24,6 +24,7 @@ func _ready():
 #		ChopTreeGoal.new(),
 #		HasRock.new(),
 #		SanityEnsure.new(),
+		DefaultGoal.new(),
 		HungerEnsure.new(),
 		],[
 		PickUpLifepot.new(),
