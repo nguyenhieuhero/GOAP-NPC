@@ -48,6 +48,7 @@ _data = {
 radius = 30.2655
 
 [node name="Fire" type="StaticBody2D" groups=["Fires"]]
+position = Vector2(138, 61)
 script = ExtResource("1_q8coo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1489,6 +1489,11 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(151, 95)
 script = ExtResource("1_wmt3j")
+maxHealth = null
+maxSanity = null
+maxHunger = null
+SPEED = null
+direction = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

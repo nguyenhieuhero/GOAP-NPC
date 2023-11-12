@@ -60,6 +60,7 @@ func _on_area_entered(area):
 		animation.play('death')
 		await animation.animation_finished
 		addBeaf(get_parent().position)
+		print(\"hes\",get_parent().position)
 	super(area)
 func addBeaf(pos: Vector2):
 	var _beaf = beafx.instantiate()

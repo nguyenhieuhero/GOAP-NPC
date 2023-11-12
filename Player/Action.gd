@@ -71,13 +71,13 @@ func createFire():
 #        return actor
 
 func killSlime():
-	var closest_smile = WorldState.get_closest_element(actor,'Chickens')
+	var closest_smile = WorldState.get_closest_element(actor,'Slimes')
 	if closest_smile:
 		if WorldState.isNear(actor,closest_smile):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_axe", true)
 		else:
-			actor.goTo('Chickens')
+			actor.goTo('Slimes')
 
 
 	

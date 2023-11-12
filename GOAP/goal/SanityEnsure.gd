@@ -5,10 +5,12 @@ func get_goal():
 	return "SanityEnsureGoal"
 
 func is_valid(state):
-	return state.get('see_Fires',false)
+	return true
 	
 func priority(state: Dictionary) -> int:
-	return 20
+	if !state.get("is_sanity",false):
+		return 100
+	return 1
 
 func get_desired_state() -> Dictionary:
 	return {
