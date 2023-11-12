@@ -1,7 +1,8 @@
 extends Area2D
+class_name ItemArea
 @export var itemRes: ItemResource
-
+func get_item_name():
+	return itemRes.name
 func collect(inventory: InventoryResource):
-	if inventory.isSlotAvailabel(itemRes):
-		inventory.insert(itemRes)
-		queue_free()
+	inventory.insert(itemRes)
+	queue_free()

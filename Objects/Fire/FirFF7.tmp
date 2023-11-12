@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl3jd88xnfl26"]
+
+[ext_resource type="Script" path="res://Objects/Fire/Fire.gd" id="1_q8coo"]
+[ext_resource type="Texture2D" uid="uid://baxv6c633txsb" path="res://Art/NinjaAdventure/FX/Particle/Fire.png" id="2_rdcvp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmc4v"]
+size = Vector2(6, 5.08333)
+
+[sub_resource type="Animation" id="Animation_q32as"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_04nss"]
+resource_name = "fire"
+length = 5.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 4, 6, 4, 6, 5, 4, 6, 5, 6, 5, 5, 6, 6, 7, 7, 7, 8, 9, 10, 11, 10, 11, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_th3qc"]
+_data = {
+"RESET": SubResource("Animation_q32as"),
+"fire": SubResource("Animation_04nss")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xtbn"]
+radius = 30.2655
+
+[node name="Fire" type="StaticBody2D" groups=["Fires"]]
+script = ExtResource("1_q8coo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -7)
+scale = Vector2(2, 2)
+texture = ExtResource("2_rdcvp")
+hframes = 12
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_kmc4v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_th3qc")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2xtbn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

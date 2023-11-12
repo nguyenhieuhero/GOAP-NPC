@@ -1,6 +1,6 @@
 extends Control
 
-@onready var inventory: InventoryResource = preload("res://Player/Inventory.tres")
+@export var inventory: InventoryResource
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 var isOpen: bool = false
 
@@ -18,4 +18,22 @@ func toggle():
 	isOpen = !isOpen
 	visible = isOpen
 
+func getExistedItems():
+	var items: Dictionary = {}
+	for slot in inventory.slots:
+		if !slot.itemResource:
+			continue
+		items[slot.itemResource.name]=true
+	return items
 
+func useItem(itemName):
+	for slot in inventory.slots:
+		if(slot.itemResource && slot.itemResource.name == itemName):
+			if(slot.quanity > 0):    
+				slot.quanity -=1;
+			if(slot.quanity == 0): 
+				slot.itemResource = null;
+	update_slots()
+
+func insert(item: ItemResource):
+	inventory.insert(item)

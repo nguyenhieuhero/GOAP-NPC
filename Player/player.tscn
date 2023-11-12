@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bkmldnnp76f2v"]
+[gd_scene load_steps=106 format=3 uid="uid://bkmldnnp76f2v"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_wmt3j"]
 [ext_resource type="Texture2D" uid="uid://xin6rec66v64" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Actions.png" id="2_6dxic"]
@@ -8,7 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://b5exwdq0s0hc2" path="res://Common/Scenes/Hitbox.tscn" id="5_s1eks"]
 [ext_resource type="PackedScene" uid="uid://dg2j5eunrih2p" path="res://Common/Scenes/Stat.tscn" id="6_f7fk4"]
 [ext_resource type="PackedScene" uid="uid://cabkpewe0qij7" path="res://Inventory/Inventory.tscn" id="7_307r4"]
+[ext_resource type="Resource" uid="uid://8ast4l400q0n" path="res://Player/Inventory.tres" id="9_a48a2"]
 [ext_resource type="Script" path="res://Player/Action.gd" id="9_o2pmv"]
+[ext_resource type="Texture2D" uid="uid://c1l48n3h1fkvn" path="res://Art/healthbarUnder.png" id="11_qwwc3"]
+[ext_resource type="Texture2D" uid="uid://betdhd4qat4k7" path="res://Art/healthbarProgress.png" id="12_sq8dp"]
+[ext_resource type="Script" path="res://Player/healthbar.gd" id="13_8cf2o"]
+[ext_resource type="Texture2D" uid="uid://cw8rxx4iuufme" path="res://Art/sanitybar (2).png" id="14_x58hs"]
+[ext_resource type="Script" path="res://Player/SanityProgressBar.gd" id="15_2qbch"]
+[ext_resource type="Texture2D" uid="uid://cbydonoktkhom" path="res://Art/hungerProcess.png" id="16_23jji"]
+[ext_resource type="Script" path="res://Player/HungerBar.gd" id="17_8etcg"]
 
 [sub_resource type="Animation" id="Animation_4pk7g"]
 length = 0.001
@@ -354,6 +362,51 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"action_started"
+}, {
+"args": [],
+"method": &"action_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pm78a"]
+resource_name = "craft_axe"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"craft_axe"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -940,6 +993,7 @@ _data = {
 "axe_left": SubResource("Animation_wrxu3"),
 "axe_right": SubResource("Animation_v7nmx"),
 "axe_up": SubResource("Animation_a75rc"),
+"craft_axe": SubResource("Animation_pm78a"),
 "idle_down": SubResource("Animation_tu4gw"),
 "idle_left": SubResource("Animation_r8iwn"),
 "idle_right": SubResource("Animation_a5p2r"),
@@ -1097,7 +1151,7 @@ states/pick/position = Vector2(314, -5)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_cebk0")
 states/walk/position = Vector2(581, 93)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_jevso"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_hd5b2"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_yadbi"), "idle", "axe", SubResource("AnimationNodeStateMachineTransition_0ddmk"), "axe", "idle", SubResource("AnimationNodeStateMachineTransition_57i33"), "idle", "pick", SubResource("AnimationNodeStateMachineTransition_ec6t4"), "pick", "idle", SubResource("AnimationNodeStateMachineTransition_d4ndd")]
-graph_offset = Vector2(-153.907, -26.0129)
+graph_offset = Vector2(-185.311, -29.218)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gelte"]
 atlas = ExtResource("2_6dxic")
@@ -1130,6 +1184,26 @@ region = Rect2(0, 240, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ra466"]
 atlas = ExtResource("2_6dxic")
 region = Rect2(48, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckqtv"]
+atlas = ExtResource("3_y3opm")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8atj"]
+atlas = ExtResource("3_y3opm")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyxhb"]
+atlas = ExtResource("3_y3opm")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks2n1"]
+atlas = ExtResource("3_y3opm")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibe6t"]
+atlas = ExtResource("3_y3opm")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rbn4t"]
 atlas = ExtResource("3_y3opm")
@@ -1262,6 +1336,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ckqtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8atj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyxhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks2n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibe6t")
+}],
+"loop": true,
+"name": &"craft_axe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rbn4t")
 }, {
 "duration": 1.0,
@@ -1381,11 +1475,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q5ok"]
-size = Vector2(12, 6)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ytjbs"]
+radius = 1.9933
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b206k"]
-radius = 7.0
+radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mxsd"]
 size = Vector2(13.6115, 7.70647)
@@ -1415,16 +1509,17 @@ parameters/walk/blend_position = Vector2(-0.0288, -0.161677)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kckkd")
-animation = &"pick_down"
+animation = &"craft_axe"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.999999)
+position = Vector2(-7.62939e-06, -0.5)
 scale = Vector2(0.987013, 0.873818)
-shape = SubResource("RectangleShape2D_7q5ok")
+shape = SubResource("CircleShape2D_ytjbs")
 
 [node name="PickableArea" parent="." instance=ExtResource("4_uq7db")]
-position = Vector2(0, -6)
+position = Vector2(0, -1)
+inventory = ExtResource("9_a48a2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickableArea"]
 shape = SubResource("CircleShape2D_b206k")
@@ -1435,7 +1530,6 @@ debug_color = Color(1, 1, 1, 0.129412)
 position = Vector2(0, -2)
 collision_layer = 2
 collision_mask = 0
-dame = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -4)
@@ -1454,9 +1548,49 @@ offset_left = -39.0
 offset_top = 2.0
 offset_right = -39.0
 offset_bottom = 2.0
+inventory = ExtResource("9_a48a2")
 
 [node name="Action" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("9_o2pmv")
 actor = NodePath("..")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="healthbar" type="Node2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="healthbar"]
+offset_left = -30.0
+offset_top = -62.5
+offset_right = 34.0
+offset_bottom = -52.5
+texture_under = ExtResource("11_qwwc3")
+texture_progress = ExtResource("12_sq8dp")
+script = ExtResource("13_8cf2o")
+
+[node name="sanitybar" type="Node2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="sanitybar"]
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 34.0
+offset_bottom = -40.0
+texture_under = ExtResource("11_qwwc3")
+texture_progress = ExtResource("14_x58hs")
+script = ExtResource("15_2qbch")
+
+[node name="hungerbar" type="Node2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="hungerbar"]
+offset_left = -30.0
+offset_top = -77.5
+offset_right = 34.0
+offset_bottom = -67.5
+texture_under = ExtResource("11_qwwc3")
+texture_progress = ExtResource("16_23jji")
+script = ExtResource("17_8etcg")
 
 [connection signal="area_entered" from="PickableArea" to="PickableArea" method="_on_area_entered"]

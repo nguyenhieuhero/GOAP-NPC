@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://6c3e7fso0xlr"]
+
+[ext_resource type="PackedScene" uid="uid://c2bdg5p71x4bn" path="res://Items/ItemArea/ItemArea.tscn" id="1_fyl71"]
+[ext_resource type="Resource" uid="uid://dts7sg5kn1dmi" path="res://Items/ItemResources/axe.tres" id="2_4xf13"]
+[ext_resource type="Texture2D" uid="uid://i7i0q7ngig0w" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic tools and meterials.png" id="3_lv7px"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx5ic"]
+size = Vector2(14, 14)
+
+[node name="Axe" groups=["Axes"] instance=ExtResource("1_fyl71")]
+itemRes = ExtResource("2_4xf13")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_jx5ic")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, 2)
+scale = Vector2(0.9, 0.875)
+texture = ExtResource("3_lv7px")
+offset = Vector2(0, -1)
+hframes = 3
+vframes = 2
+frame = 1
