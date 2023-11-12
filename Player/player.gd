@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Actor
 @export var maxHealth: int = 100
 var currentHealth: int = maxHealth
-@export var maxSanity: int = 30 
+@export var maxSanity: int = 100
 var currentSanity: int = maxSanity
 @export var maxHunger: int = 100 
 @onready var currentHunger: int = maxHunger
@@ -20,12 +20,12 @@ var currentSanity: int = maxSanity
 func _ready():
 	animation_tree.active = true
 	agent.init(self,[
-#		HasTwig.new(),
-#		ChopTreeGoal.new(),
-#		HasRock.new(),
-#		SanityEnsure.new(),
+		HasFireGoal.new(),
+		SanityEnsure.new(),
 		DefaultGoal.new(),
+		KILLSLIME.new(),
 		HungerEnsure.new(),
+		HealthyEnsure.new()
 		],[
 		PickUpLifepot.new(),
 		PickUpLog.new(),
@@ -34,9 +34,10 @@ func _ready():
 		PickUpBeaf.new(),
 		CreateAxe.new(),
 		ChopTree.new(),
-#		KillSlime.new(),
-#		CreateFire.new(),
-#		HealingSanity.new(),
+		KillSlime.new(),
+		CreateFire.new(),
+		HealingHealth.new(),
+		HealingSanity.new(),
 		KillChicken.new(),
 		HealingHunger.new(),		
 	])

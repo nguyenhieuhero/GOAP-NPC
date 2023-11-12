@@ -4,7 +4,6 @@ extends Hurtbox
 const logx = preload("res://Items/Scences/Log.tscn")
 
 func _on_area_entered(area: Hitbox):
-	print(get_parent().global_position)
 	animation.play("being hit")
 	if currentHealth - area.dame < 0:
 		animation.play("fall")

@@ -9,7 +9,8 @@ func get_cost(state: Dictionary):
 
 func get_preconditions() -> Dictionary:
 	return {
-		"see_fire": true,
+		"is_sanity": false,
+		"see_Fires": true,
 	}
 
 func get_effects() -> Dictionary:
@@ -20,9 +21,10 @@ func get_effects() -> Dictionary:
 func perform(actor: Actor, delta):
 	var closest_smile = WorldState.get_closest_element(actor,'Fires')
 	if closest_smile:
-		if WorldState.isNear(actor,closest_smile):
+		if WorldState.isNear(actor,closest_smile,40):
 			actor.set_idle()
-			actor.animation_tree.set("parameters/conditions/is_axe", true)
+			actor.currentSanity = 80
+			return true
 		else:
 			actor.goTo('Fires')
 			

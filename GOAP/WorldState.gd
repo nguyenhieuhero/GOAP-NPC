@@ -42,11 +42,11 @@ func get_closest_element(reference,group_name):
 
 	return closest_element
 
-func isNear(actor: CharacterBody2D, node2: Node):
+func isNear(actor: CharacterBody2D, node2: Node, distance = 7):
 	if(actor == null or node2 == null):
 		return false
 	var currentDis = actor.global_position.distance_to(node2.global_position)
-	if currentDis < 5:
+	if currentDis < distance:
 		return true
 	return false
 

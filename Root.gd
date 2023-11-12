@@ -2,10 +2,11 @@ extends Node2D
 
 var state = "day"
 var change_state = false
-var length_of_day = 10
+var length_of_day = 20
 var length_of_night = 10
 var countDay = 1
-var hungerdecrease = 30
+var hungerdecrease = 50
+var sanitydecrease = 40
 func _ready():
 	if state == "day":
 		$DayNight/countDay.text = "Day" + " " +str(countDay)
@@ -32,7 +33,7 @@ func _process(delta):
 			$DayNight/countDay.text = "Day" + " " + str(countDay)
 			$DayNight/DayNight.text = "Ngày"
 			print("Ngay", countDay)
-			decreaseHunger()	
+			decreaseStat()	
 			change_to_day()
 		elif state == "night":
 			$DayNight/DayNight.text = "Tối"
@@ -48,9 +49,7 @@ func change_to_night():
 	$Timer.wait_time = length_of_night
 	$Timer.start()	
 	$Timer["autostart"] = true
-func decreaseHunger():
+func decreaseStat():
 	$Player.currentHunger -= hungerdecrease
-	if $Player.currentHunger < 0: 
-		print('game over')
-	print($Player.currentHunger)
+	$Player.currentSanity -= sanitydecrease
 

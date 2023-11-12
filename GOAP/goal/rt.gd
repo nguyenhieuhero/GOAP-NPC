@@ -10,8 +10,8 @@ func is_valid(state):
 	
 func priority(state: Dictionary) -> int:
 	if state.get("is_day",false):
-		return 10
-	return 0.5
+		return 30
+	return 1
 
 func get_desired_state() -> Dictionary:
 	return {

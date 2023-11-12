@@ -3,7 +3,7 @@ extends Node
 class_name GoapPlanner
 
 static var actions: Array[GoapAction]
-var max_depth = 7
+var max_depth = 5
 
 static func set_actions(_actions: Array[GoapAction]):
 	print("Set action successs!")

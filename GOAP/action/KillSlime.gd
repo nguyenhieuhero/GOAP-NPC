@@ -25,7 +25,6 @@ func perform(actor: Actor, delta):
 		if WorldState.isNear(actor,closest_smile):
 			actor.set_idle()
 			actor.animation_tree.set("parameters/conditions/is_axe", true)
-			actor.currentHealth -= 10
 		else:
 			actor.goTo('Slimes')
 	

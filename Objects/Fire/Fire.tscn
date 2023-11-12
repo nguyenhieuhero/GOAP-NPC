@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl3jd88xnfl26"]
+[gd_scene load_steps=7 format=3 uid="uid://dl3jd88xnfl26"]
 
 [ext_resource type="Script" path="res://Objects/Fire/Fire.gd" id="1_q8coo"]
 [ext_resource type="Texture2D" uid="uid://baxv6c633txsb" path="res://Art/NinjaAdventure/FX/Particle/Fire.png" id="2_rdcvp"]
@@ -44,9 +44,6 @@ _data = {
 "fire": SubResource("Animation_04nss")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2xtbn"]
-radius = 30.2655
-
 [node name="Fire" type="StaticBody2D" groups=["Fires"]]
 script = ExtResource("1_q8coo")
 
@@ -65,10 +62,3 @@ shape = SubResource("RectangleShape2D_kmc4v")
 libraries = {
 "": SubResource("AnimationLibrary_th3qc")
 }
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_2xtbn")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

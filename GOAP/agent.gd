@@ -42,9 +42,9 @@ func _process(delta):
 func update_agent_state():
 	state = {
 #			"position": actor,
-			"is_healthy":actor.currentHealth>80,
-			"is_sanity": actor.currentSanity>15,
-			"is_hunger": actor.currentHunger>80
+			"is_healthy":actor.currentHealth>60,
+			"is_sanity": actor.currentSanity>40,
+			"is_hunger": actor.currentHunger>60
 		}
 	for s in actor.inventory.getExistedItems():
 		state['has_'+s] = true
@@ -68,6 +68,7 @@ func _get_best_goal():
 
 func _follow_plan(plan, delta):
 	if plan.size() == 0:
+		actor.velocity = Vector2.ZERO
 		return
 	var is_step_complete = plan[current_plan_step].perform(actor, delta)
 	if is_step_complete and current_plan_step < plan.size() - 1:

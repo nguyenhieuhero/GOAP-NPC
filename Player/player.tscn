@@ -1475,11 +1475,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q5ok"]
-size = Vector2(12, 6)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ytjbs"]
+radius = 1.9933
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b206k"]
-radius = 7.0
+radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mxsd"]
 size = Vector2(13.6115, 7.70647)
@@ -1513,12 +1513,12 @@ animation = &"craft_axe"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.999999)
+position = Vector2(-7.62939e-06, -0.5)
 scale = Vector2(0.987013, 0.873818)
-shape = SubResource("RectangleShape2D_7q5ok")
+shape = SubResource("CircleShape2D_ytjbs")
 
 [node name="PickableArea" parent="." instance=ExtResource("4_uq7db")]
-position = Vector2(0, -6)
+position = Vector2(0, -1)
 inventory = ExtResource("9_a48a2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickableArea"]
@@ -1577,7 +1577,6 @@ offset_left = -30.0
 offset_top = -50.0
 offset_right = 34.0
 offset_bottom = -40.0
-max_value = 30.0
 texture_under = ExtResource("11_qwwc3")
 texture_progress = ExtResource("14_x58hs")
 script = ExtResource("15_2qbch")

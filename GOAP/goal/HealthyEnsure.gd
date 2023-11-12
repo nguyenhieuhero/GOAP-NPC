@@ -1,17 +1,18 @@
 extends GoapGoal
 
-class_name HasRock
-
+class_name HealthyEnsure
 func get_goal():
-	return "HasRockGoal"
+	return "HealthyEnsureGoal"
 
 func is_valid(state):
-	return state.get('see_Rocks',false)
+	return true
 	
 func priority(state: Dictionary) -> int:
+	if !state.get("is_healthy",false):
+		return 150
 	return 1
 
 func get_desired_state() -> Dictionary:
 	return {
-		'has_rock':true
+		"is_healthy": true
 	}

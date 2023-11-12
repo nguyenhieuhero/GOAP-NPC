@@ -31,7 +31,7 @@ func updateAnimation():
 	animation.play(animationString)
 	
 func knockback(vectorDame: Vector2):
-	var knockbackDirection = vectorDame * 1000
+	var knockbackDirection = vectorDame * 100
 	velocity = knockbackDirection
 	move_and_slide()
 #
